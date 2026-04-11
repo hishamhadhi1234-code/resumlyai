@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { format } from "date-fns";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Download, ArrowLeft, CheckCircle, AlertCircle, Sparkles } from "lucide-react";
@@ -160,7 +161,7 @@ const ResumePage = () => {
                     {resume.enhancedExperience.filter(e => e.company || e.role).map(exp => (
                       <div key={exp.id} style={{ marginBottom: 12 }}>
                         <h3 style={{ fontSize: 15, fontWeight: 600 }}>{exp.role}{exp.company ? ` at ${exp.company}` : ""}</h3>
-                        {exp.duration && <div style={{ fontSize: 13, color: "#666" }}>{exp.duration}</div>}
+                        {(exp.fromDate || exp.toDate) && <div style={{ fontSize: 13, color: "#666" }}>{exp.fromDate ? format(new Date(exp.fromDate), "MMM yyyy") : ""} – {exp.toDate ? format(new Date(exp.toDate), "MMM yyyy") : "Present"}</div>}
                         {exp.description && <p style={{ fontSize: 13, color: "#444", marginTop: 4 }}>{exp.description}</p>}
                       </div>
                     ))}

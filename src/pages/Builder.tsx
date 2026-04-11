@@ -1,16 +1,20 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { format } from "date-fns";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Plus, Trash2, ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Plus, Trash2, ArrowRight, ArrowLeft, Sparkles, CalendarIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ResumeData, Experience, Project, Education } from "@/types/resume";
 import { generateResume } from "@/lib/resumeGenerator";
 
-const emptyExp: () => Experience = () => ({ id: crypto.randomUUID(), company: "", role: "", duration: "", description: "" });
+const emptyExp: () => Experience = () => ({ id: crypto.randomUUID(), company: "", role: "", fromDate: "", toDate: "", description: "" });
 const emptyProj: () => Project = () => ({ id: crypto.randomUUID(), name: "", description: "", technologies: "" });
 const emptyEdu: () => Education = () => ({ id: crypto.randomUUID(), institution: "", degree: "", year: "" });
 
@@ -70,7 +74,48 @@ const Builder = () => {
               </div>
               <Input placeholder="Company" value={exp.company} onChange={e => updateExp(exp.id, "company", e.target.value)} />
               <Input placeholder="Role" value={exp.role} onChange={e => updateExp(exp.id, "role", e.target.value)} />
-              <Input placeholder="Duration (e.g., Jan 2023 - Present)" value={exp.duration} onChange={e => updateExp(exp.id, "duration", e.target.value)} />
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs text-muted-foreground mb-1 block">From</label>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" className={cn("w-full justify-start text-left font-normal", !exp.fromDate && "text-muted-foreground")}>
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {exp.fromDate ? format(new Date(exp.fromDate), "MMM yyyy") : "Select date"}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={exp.fromDate ? new Date(exp.fromDate) : undefined}
+                        onSelect={(date) => updateExp(exp.id, "fromDate", date ? date.toISOString() : "")}
+                        initialFocus
+                        className="p-3 pointer-events-auto"
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
+                <div>
+                  <label className="text-xs text-muted-foreground mb-1 block">To</label>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" className={cn("w-full justify-start text-left font-normal", !exp.toDate && "text-muted-foreground")}>
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {exp.toDate ? format(new Date(exp.toDate), "MMM yyyy") : "Present"}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={exp.toDate ? new Date(exp.toDate) : undefined}
+                        onSelect={(date) => updateExp(exp.id, "toDate", date ? date.toISOString() : "")}
+                        initialFocus
+                        className="p-3 pointer-events-auto"
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
+              </div>
               <Textarea placeholder="Description" rows={3} value={exp.description} onChange={e => updateExp(exp.id, "description", e.target.value)} />
             </div>
           ))}
