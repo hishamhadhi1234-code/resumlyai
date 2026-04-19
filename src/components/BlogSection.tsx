@@ -89,29 +89,56 @@ const BlogSection = () => (
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {blogs.map((b, i) => {
-          const cardInner = (
+          const cardClass =
+            "group p-6 rounded-2xl bg-gradient-card border border-border hover:border-primary/40 transition-all hover:-translate-y-1 flex flex-col";
+          const inner = (
             <>
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary">
-                {b.category}
-              </span>
-              <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-            </div>
-            <h3 className="font-semibold text-base mb-2 leading-snug group-hover:text-primary transition-colors">
-              {b.title}
-            </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
-              {b.excerpt}
-            </p>
-            <div className="flex items-center gap-3 text-xs text-muted-foreground">
-              <span>{b.date}</span>
-              <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
-              <span className="flex items-center gap-1">
-                <Clock className="w-3 h-3" /> {b.readTime}
-              </span>
-            </div>
-          </motion.a>
-        ))}
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary">
+                  {b.category}
+                </span>
+                <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+              </div>
+              <h3 className="font-semibold text-base mb-2 leading-snug group-hover:text-primary transition-colors">
+                {b.title}
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                {b.excerpt}
+              </p>
+              <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                <span>{b.date}</span>
+                <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
+                <span className="flex items-center gap-1">
+                  <Clock className="w-3 h-3" /> {b.readTime}
+                </span>
+              </div>
+            </>
+          );
+          const motionProps = {
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true },
+            transition: { delay: i * 0.08 },
+            className: cardClass,
+          };
+          return b.internal ? (
+            <motion.div key={b.title} {...motionProps}>
+              <Link to={b.url} className="contents">
+                {inner}
+              </Link>
+            </motion.div>
+          ) : (
+            <motion.a
+              key={b.title}
+              href={b.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              {...motionProps}
+            >
+              {inner}
+            </motion.a>
+          );
+        })}
       </div>
     </div>
   </section>
