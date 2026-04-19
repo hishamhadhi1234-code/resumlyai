@@ -2,9 +2,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { motion } from "framer-motion";
 
 const faqs = [
-  { q: "Is Resumly really free?", a: "Yes! Our basic plan is completely free. You can create a resume with AI-generated content at no cost. Pro features like advanced scoring and job matching require an upgrade." },
+  { q: "Is Resumly really free?", a: "Yes! Resumly is completely free to use right now. Every feature — AI-generated summaries, ATS optimization, resume scoring, and job description matching — is unlocked for everyone at no cost." },
   { q: "What makes Resumly ATS-friendly?", a: "We use a clean, single-column layout with standard section headers and optimized keywords. Our AI ensures your resume passes through applicant tracking systems used by 95% of companies." },
-  { q: "Can I customize my resume for different jobs?", a: "Absolutely! Our Pro plan includes a job description matching feature that tailors your resume content for each specific application." },
+  { q: "Can I customize my resume for different jobs?", a: "Absolutely! Resumly includes a job description matching feature that tailors your resume content for each specific application — completely free." },
   { q: "How does the AI improve my resume?", a: "Our AI rewrites your experience with strong action verbs, adds measurable results, generates a professional summary, and suggests relevant skills based on your target role." },
   { q: "Is my data safe?", a: "Yes, your data is encrypted and secure. We never share your personal information with third parties." },
 ];
