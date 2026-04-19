@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type Blog = {
   title: string;
@@ -8,17 +9,19 @@ type Blog = {
   readTime: string;
   date: string;
   url: string;
+  internal?: boolean;
 };
 
 const blogs: Blog[] = [
   {
-    title: "10 ATS-Friendly Resume Tips That Actually Work in 2025",
+    title: "Will AI Replace Jobs in 2026? Here's the Real Answer (Not the Hype)",
     excerpt:
-      "Most resumes get rejected by bots before a human ever sees them. Here's how to format, what keywords to use, and what to avoid.",
-    category: "Resume Tips",
-    readTime: "6 min read",
-    date: "Apr 12, 2025",
-    url: "https://www.indeed.com/career-advice/resumes-cover-letters/how-to-make-resume-ats-friendly",
+      "Headlines say AI is taking over. The truth is more nuanced — here's an honest breakdown of which jobs are at risk, which are safe, and how to stay ahead.",
+    category: "AI & Future of Work",
+    readTime: "9 min read",
+    date: "Apr 18, 2026",
+    url: "/blog/will-ai-replace-jobs-2026",
+    internal: true,
   },
   {
     title: "How to Write a Resume Summary as a Fresher (with Examples)",
@@ -85,18 +88,9 @@ const BlogSection = () => (
       </motion.div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {blogs.map((b, i) => (
-          <motion.a
-            key={b.title}
-            href={b.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.08 }}
-            className="group p-6 rounded-2xl bg-gradient-card border border-border hover:border-primary/40 transition-all hover:-translate-y-1 flex flex-col"
-          >
+        {blogs.map((b, i) => {
+          const cardInner = (
+            <>
             <div className="flex items-center justify-between mb-4">
               <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary">
                 {b.category}
