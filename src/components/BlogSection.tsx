@@ -12,13 +12,13 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
-    title: "AI vs Human Jobs: What's Really Changing in 2025",
+    title: "10 ATS-Friendly Resume Tips That Actually Work in 2025",
     excerpt:
-      "From copywriters to coders, AI is reshaping how we work. Here's an honest look at which jobs are at risk, which are evolving, and how to stay relevant.",
-    category: "AI & Future of Work",
-    readTime: "7 min read",
-    date: "Apr 15, 2025",
-    url: "https://www.weforum.org/agenda/2023/05/jobs-lost-created-ai-gpt/",
+      "Most resumes get rejected by bots before a human ever sees them. Here's how to format, what keywords to use, and what to avoid.",
+    category: "Resume Tips",
+    readTime: "6 min read",
+    date: "Apr 12, 2025",
+    url: "https://www.indeed.com/career-advice/resumes-cover-letters/how-to-make-resume-ats-friendly",
   },
   {
     title: "How to Write a Resume Summary as a Fresher (with Examples)",
