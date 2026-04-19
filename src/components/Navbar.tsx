@@ -37,6 +37,7 @@ const Navbar = () => {
           <a href="#how-it-works" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>How it Works</a>
           <a href="#pricing" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>Pricing</a>
           <a href="#contact" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>Contact</a>
+          <Link to="/privacy" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>Privacy Policy</Link>
           <Link to="/builder" onClick={() => setIsOpen(false)}>
             <Button variant="hero" className="w-full">Build My Resume</Button>
           </Link>
