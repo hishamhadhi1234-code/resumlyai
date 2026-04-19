@@ -19,7 +19,6 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8">
           <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Features</a>
           <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">How it Works</a>
-          <a href="#pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
           <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</a>
           <Link to="/builder">
             <Button variant="hero" size="sm">Build My Resume</Button>
@@ -35,7 +34,6 @@ const Navbar = () => {
         <div className="md:hidden glass border-t border-border p-4 flex flex-col gap-4">
           <a href="#features" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>Features</a>
           <a href="#how-it-works" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>How it Works</a>
-          <a href="#pricing" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>Pricing</a>
           <a href="#contact" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>Contact</a>
           <Link to="/privacy" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>Privacy Policy</Link>
           <Link to="/builder" onClick={() => setIsOpen(false)}>
