@@ -11,9 +11,14 @@ const Footer = () => (
           </div>
           <span className="text-lg font-bold">Resumly</span>
         </Link>
-        <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Resumly. All rights reserved.
-        </p>
+        <div className="flex items-center gap-6">
+          <Link to="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Privacy Policy
+          </Link>
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Resumly. All rights reserved.
+          </p>
+        </div>
       </div>
     </div>
   </footer>
