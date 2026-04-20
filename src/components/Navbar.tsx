@@ -21,9 +21,9 @@ const Navbar = () => {
           <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">How it Works</a>
           <a href="#blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Blog</a>
           <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</a>
-          <a href="https://alarmpenguinmelt.com/hut48qswjv?key=6bd3167a40ceda1a37fbd420457b971d" target="_blank" rel="noopener noreferrer">
+          <Link to="/builder">
             <Button variant="hero" size="sm">Build My Resume</Button>
-          </a>
+          </Link>
         </div>
 
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
@@ -38,9 +38,9 @@ const Navbar = () => {
           <a href="#blog" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>Blog</a>
           <a href="#contact" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>Contact</a>
           <Link to="/privacy" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>Privacy Policy</Link>
-          <a href="https://alarmpenguinmelt.com/hut48qswjv?key=6bd3167a40ceda1a37fbd420457b971d" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
+          <Link to="/builder" onClick={() => setIsOpen(false)}>
             <Button variant="hero" className="w-full">Build My Resume</Button>
-          </a>
+          </Link>
         </div>
       )}
     </nav>
