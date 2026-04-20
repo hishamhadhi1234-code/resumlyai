@@ -24,6 +24,16 @@ const blogs: Blog[] = [
     internal: true,
   },
   {
+    title: "How to Create an ATS-Friendly Resume in 2026 (Step-by-Step Guide)",
+    excerpt:
+      "If your resume never reached a human—this is why. Learn how to create an ATS-friendly resume that gets noticed and gets you interviews.",
+    category: "Resume Tips",
+    readTime: "7 min read",
+    date: "Apr 19, 2026",
+    url: "/blog/ats-friendly-resume-guide",
+    internal: true,
+  },
+  {
     title: "How to Write a Resume Summary as a Fresher (with Examples)",
     excerpt:
       "No experience? No problem. Learn how to write a strong summary that highlights your skills, projects, and potential.",
