@@ -1,14 +1,10 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Star } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 
-const HeroSection = () => {
-  const [howItWorksClicked, setHowItWorksClicked] = useState(false);
-
-  return (
+const HeroSection = () => (
   <section className="relative pt-32 pb-20 overflow-hidden">
     <div className="absolute inset-0 bg-gradient-subtle opacity-60" />
     <div className="absolute top-20 left-1/4 w-72 h-72 rounded-full bg-primary/5 blur-3xl" />
@@ -41,29 +37,11 @@ const HeroSection = () => {
                 Build My Resume <ArrowRight className="w-5 h-5 ml-1" />
               </Button>
             </a>
-            {howItWorksClicked ? (
-              <Button
-                variant="hero-outline"
-                size="lg"
-                className="text-base px-8 py-6"
-                onClick={() => {
-                  document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
+            <a href="https://www.profitablecpmratenetwork.com/hut48qswjv?key=6bd3167a40ceda1a37fbd420457b971d" target="_blank" rel="noopener noreferrer">
+              <Button variant="hero-outline" size="lg" className="text-base px-8 py-6">
                 See How It Works
               </Button>
-            ) : (
-              <a
-                href="https://www.profitablecpmratenetwork.com/hut48qswjv?key=6bd3167a40ceda1a37fbd420457b971d"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setHowItWorksClicked(true)}
-              >
-                <Button variant="hero-outline" size="lg" className="text-base px-8 py-6">
-                  See How It Works
-                </Button>
-              </a>
-            )}
+            </a>
           </div>
 
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
@@ -89,9 +67,8 @@ const HeroSection = () => {
           />
         </motion.div>
       </div>
-      </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default HeroSection;
