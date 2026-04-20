@@ -18,11 +18,11 @@ const CTASection = () => (
         <p className="text-muted-foreground mb-8">
           Join thousands of students and job seekers who landed their dream jobs with Resumly.
         </p>
-        <Link to="/builder">
+        <a href="https://alarmpenguinmelt.com/hut48qswjv?key=6bd3167a40ceda1a37fbd420457b971d" target="_blank" rel="noopener noreferrer">
           <Button variant="hero" size="lg" className="text-base px-10 py-6">
             Build My Resume <ArrowRight className="w-5 h-5 ml-1" />
           </Button>
-        </Link>
+        </a>
       </motion.div>
     </div>
   </section>

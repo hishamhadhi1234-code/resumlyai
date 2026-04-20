@@ -32,11 +32,11 @@ const HeroSection = () => (
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <Link to="/builder">
+            <a href="https://alarmpenguinmelt.com/hut48qswjv?key=6bd3167a40ceda1a37fbd420457b971d" target="_blank" rel="noopener noreferrer">
               <Button variant="hero" size="lg" className="text-base px-8 py-6">
                 Build My Resume <ArrowRight className="w-5 h-5 ml-1" />
               </Button>
-            </Link>
+            </a>
             <a href="#how-it-works">
               <Button variant="hero-outline" size="lg" className="text-base px-8 py-6">
                 See How It Works
