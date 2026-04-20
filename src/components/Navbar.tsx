@@ -21,9 +21,9 @@ const Navbar = () => {
           <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">How it Works</a>
           <a href="#blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Blog</a>
           <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</a>
-          <Link to="/builder">
+          <a href="https://alarmpenguinmelt.com/hut48qswjv?key=6bd3167a40ceda1a37fbd420457b971d" target="_blank" rel="noopener noreferrer">
             <Button variant="hero" size="sm">Build My Resume</Button>
-          </Link>
+          </a>
         </div>
 
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
