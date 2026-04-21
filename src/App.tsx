@@ -8,6 +8,7 @@ import Builder from "./pages/Builder.tsx";
 import ResumePage from "./pages/ResumePage.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import BlogAIJobs from "./pages/BlogAIJobs.tsx";
+import BlogResumeMistakes from "./pages/BlogResumeMistakes.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -23,7 +24,8 @@ const App = () => (
           <Route path="/builder" element={<Builder />} />
           <Route path="/resume" element={<ResumePage />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/blog/will-ai-replace-jobs-2026" element={<BlogAIJobs />} />
+<Route path="/blog/will-ai-replace-jobs-2026" element={<BlogAIJobs />} />
+          <Route path="/blog/top-10-resume-mistakes-freshers-india" element={<BlogResumeMistakes />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
