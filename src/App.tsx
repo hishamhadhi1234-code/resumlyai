@@ -8,6 +8,7 @@ import Builder from "./pages/Builder.tsx";
 import ResumePage from "./pages/ResumePage.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import BlogAIJobs from "./pages/BlogAIJobs.tsx";
+import BlogResumeMistakes from "./pages/BlogResumeMistakes.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
