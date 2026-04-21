@@ -14,6 +14,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "Top 10 Resume Mistakes Freshers Make in India (And How to Fix Them)",
+    excerpt:
+      "If you're a fresher trying to land your first job, avoid these common resume mistakes that get your application rejected instantly. Learn how to fix them and stand out.",
+    category: "Resume Tips",
+    readTime: "8 min read",
+    date: "Apr 21, 2026",
+    url: "/blog/top-10-resume-mistakes-freshers-india",
+    internal: true,
+  },
+  {
     title: "Will AI Replace Jobs in 2026? Here's the Real Answer (Not the Hype)",
     excerpt:
       "Headlines say AI is taking over. The truth is more nuanced — here's an honest breakdown of which jobs are at risk, which are safe, and how to stay ahead.",
