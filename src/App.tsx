@@ -24,7 +24,8 @@ const App = () => (
           <Route path="/builder" element={<Builder />} />
           <Route path="/resume" element={<ResumePage />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/blog/will-ai-replace-jobs-2026" element={<BlogAIJobs />} />
+<Route path="/blog/will-ai-replace-jobs-2026" element={<BlogAIJobs />} />
+          <Route path="/blog/top-10-resume-mistakes-freshers-india" element={<BlogResumeMistakes />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
