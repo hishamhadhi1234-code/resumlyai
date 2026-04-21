@@ -28,7 +28,7 @@ const BlogResumeMistakes = () => {
     {
       title: "Writing a Weak Career Objective",
       problem: "Boring objectives like 'To work in a challenging environment where I can grow…' say nothing specific. Recruiters see this line hundreds of times.",
-      solution: "Make it specific and value-driven. Mention your skills, the role, and what you bring. Example: 'Motivated Computer Science graduate skilled in Python and data analysis, seeking an entry-level role to build scalable solutions.'",
+      solution: "Make it specific and results-driven. Mention your skills, the role, and what you bring. Example: 'Motivated Computer Science graduate skilled in Python and data analysis, seeking an entry-level role to build scalable solutions.'",
     },
     {
       title: "Adding Too Much Unnecessary Information",
@@ -106,7 +106,7 @@ const BlogResumeMistakes = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-8 leading-relaxed">
-            <p className="text-xl leading-relaxed">
+            <p className="text-lg leading-relaxed">
               If you're a fresher in India trying to land your first job, your resume is your biggest weapon. 
               But here's the harsh truth: most freshers unknowingly make mistakes that instantly get their resumes rejected.
             </p>
@@ -130,7 +130,7 @@ const BlogResumeMistakes = () => {
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-destructive/10 text-destructive flex items-center justify-center font-bold">
                     {index + 1}
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-bold m-0 pt-1">
+                  <h2 className="text-2xl md:text-3xl font-bold mt-0 pt-1">
                     {mistake.title}
                   </h2>
                 </div>
@@ -149,7 +149,7 @@ const BlogResumeMistakes = () => {
                       <CheckCircle className="w-5 h-5 text-green-600" />
                       <span className="font-semibold text-green-600">How to fix it:</span>
                     </div>
-                    <p className="m-0 whitespace-pre-line">{mistake.solution}</p>
+                    <p className="m-0">{mistake.solution}</p>
                   </div>
                 </div>
               </div>
@@ -182,7 +182,7 @@ const BlogResumeMistakes = () => {
             </p>
 
             <div className="bg-muted rounded-xl p-6 my-8">
-              <h3 className="text-xl font-bold mb-4 mt-0">Quick Recap:</h3>
+              <h3 className="text-lg font-bold mb-4 mt-0">Quick Recap:</h3>
               <ul className="space-y-2 m-0">
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
@@ -218,7 +218,7 @@ const BlogResumeMistakes = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/builder"
-                  className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
                 >
                   Build My Resume Now
                 </Link>
