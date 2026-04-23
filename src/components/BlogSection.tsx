@@ -14,6 +14,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "Best Skills to Add in Resume for Freshers in India",
+    excerpt:
+      "Wondering which skills to put on your resume? Here are the top technical and soft skills Indian recruiters actually look for — and how to pick the right ones.",
+    category: "Resume Tips",
+    readTime: "4 min read",
+    date: "Apr 23, 2026",
+    url: "/blog/best-skills-resume-freshers-india",
+    internal: true,
+  },
+  {
     title: "Simple Resume Format for Freshers in India",
     excerpt:
       "Confused about which resume format to use? Learn the simple, ATS-friendly structure that works best for freshers in India — clean, clear, and one page.",
