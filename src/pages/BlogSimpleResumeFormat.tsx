@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Clock, Calendar, CheckCircle } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, CheckCircle, Download, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 
@@ -112,11 +112,49 @@ const BlogSimpleResumeFormat = () => {
             </div>
 
             <h2 className="text-2xl md:text-3xl font-bold mt-12 mb-4">
-              Free Template Tips
+              Free Template — Download Now
             </h2>
             <p>
-              For a free template, you should use a layout with bullet points.
-              Avoid using colors, images, and fancy fonts in your resume.
+              Grab the ready-to-use simple resume template below. Open it in Word or
+              Google Docs, fill in your details, and you're set. The PDF version is
+              perfect for previewing the layout before you customize.
+            </p>
+
+            <div className="not-prose grid sm:grid-cols-2 gap-3 my-6">
+              <a
+                href="/templates/simple-resume-format-freshers-india.docx"
+                download
+                className="group flex items-center gap-3 p-4 rounded-xl border border-border bg-card hover:border-primary/50 hover:bg-primary/5 transition-all"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="font-semibold text-sm">Download DOCX</div>
+                  <div className="text-xs text-muted-foreground">Editable in Word / Google Docs</div>
+                </div>
+                <Download className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+              </a>
+
+              <a
+                href="/templates/simple-resume-format-freshers-india.pdf"
+                download
+                className="group flex items-center gap-3 p-4 rounded-xl border border-border bg-card hover:border-primary/50 hover:bg-primary/5 transition-all"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="font-semibold text-sm">Download PDF</div>
+                  <div className="text-xs text-muted-foreground">Preview the layout</div>
+                </div>
+                <Download className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+              </a>
+            </div>
+
+            <p className="text-sm text-muted-foreground">
+              Tip: avoid colors, images, and fancy fonts when you customize — the template
+              is already ATS-friendly out of the box.
             </p>
 
             <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg my-10">
