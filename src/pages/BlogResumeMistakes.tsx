@@ -2,21 +2,19 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Clock, Calendar, CheckCircle, XCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import { setSEO } from "@/lib/seo";
 
 const BlogResumeMistakes = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Top 10 Resume Mistakes Freshers Make in India (And How to Fix Them) | Resumly";
-    const meta = document.querySelector('meta[name="description"]');
-    const content =
-      "Top 10 resume mistakes freshers make in India and how to fix them. Learn how to create an ATS-friendly resume that gets you hired.";
-    if (meta) meta.setAttribute("content", content);
-    else {
-      const m = document.createElement("meta");
-      m.name = "description";
-      m.content = content;
-      document.head.appendChild(m);
-    }
+    setSEO({
+      title: "Top 10 Resume Mistakes Freshers Make in India (And How to Fix Them) | Resumly",
+      description:
+        "Top 10 resume mistakes freshers make in India and how to fix them. Learn how to create an ATS-friendly resume that gets you hired.",
+      path: "/blog/top-10-resume-mistakes-freshers-india",
+      type: "article",
+      publishedTime: "2026-04-21",
+    });
   }, []);
 
   const mistakes = [
