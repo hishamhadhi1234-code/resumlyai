@@ -14,6 +14,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "Simple Resume Format for Freshers in India",
+    excerpt:
+      "Confused about which resume format to use? Learn the simple, ATS-friendly structure that works best for freshers in India — clean, clear, and one page.",
+    category: "Resume Tips",
+    readTime: "5 min read",
+    date: "Apr 23, 2026",
+    url: "/blog/simple-resume-format-freshers-india",
+    internal: true,
+  },
+  {
     title: "Top 10 Resume Mistakes Freshers Make in India (And How to Fix Them)",
     excerpt:
       "If you're a fresher trying to land your first job, avoid these common resume mistakes that get your application rejected instantly. Learn how to fix them and stand out.",
