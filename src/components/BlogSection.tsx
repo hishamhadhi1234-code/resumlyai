@@ -14,6 +14,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "How to Get Your First Job in India Without Experience",
+    excerpt:
+      "No experience? No problem. A practical 4-step playbook to land your first job in India — from resume to networking — even when you're starting from scratch.",
+    category: "Career Advice",
+    readTime: "5 min read",
+    date: "Apr 23, 2026",
+    url: "/blog/first-job-india-without-experience",
+    internal: true,
+  },
+  {
     title: "Best Skills to Add in Resume for Freshers in India",
     excerpt:
       "Wondering which skills to put on your resume? Here are the top technical and soft skills Indian recruiters actually look for — and how to pick the right ones.",
