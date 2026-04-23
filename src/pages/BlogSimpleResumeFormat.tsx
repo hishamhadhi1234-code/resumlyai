@@ -44,7 +44,7 @@ const BlogSimpleResumeFormat = () => {
 
           <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-6">
             Simple Resume Format for{" "}
-            <span text-gradient="" className="text-gradient">Freshers in India</span>
+            <span className="text-gradient">Freshers in India</span>
           </h1>
 
           <div className="flex items-center gap-4 text-sm text-muted-foreground mb-10 pb-8 border-b border-border">
