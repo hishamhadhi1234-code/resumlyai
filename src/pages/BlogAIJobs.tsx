@@ -2,21 +2,19 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import { setSEO } from "@/lib/seo";
 
 const BlogAIJobs = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Will AI Replace Jobs in 2026? The Real Answer | Resumly";
-    const meta = document.querySelector('meta[name="description"]');
-    const content =
-      "Will AI replace jobs in 2026? An honest, no-hype breakdown of which jobs are at risk, which are safe, and how to stay ahead.";
-    if (meta) meta.setAttribute("content", content);
-    else {
-      const m = document.createElement("meta");
-      m.name = "description";
-      m.content = content;
-      document.head.appendChild(m);
-    }
+    setSEO({
+      title: "Will AI Replace Jobs in 2026? The Real Answer | Resumly",
+      description:
+        "Will AI replace jobs in 2026? An honest, no-hype breakdown of which jobs are at risk, which are safe, and how to stay ahead.",
+      path: "/blog/will-ai-replace-jobs-2026",
+      type: "article",
+      publishedTime: "2026-04-18",
+    });
   }, []);
 
   return (

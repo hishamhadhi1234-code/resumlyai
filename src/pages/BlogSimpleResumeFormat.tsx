@@ -2,21 +2,19 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Clock, Calendar, CheckCircle, Download, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import { setSEO } from "@/lib/seo";
 
 const BlogSimpleResumeFormat = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Simple Resume Format for Freshers in India | Resumly";
-    const meta = document.querySelector('meta[name="description"]');
-    const content =
-      "Discover the best simple resume format for freshers in India. Learn the ideal structure, sections, and tips to create an ATS-friendly one-page resume.";
-    if (meta) meta.setAttribute("content", content);
-    else {
-      const m = document.createElement("meta");
-      m.name = "description";
-      m.content = content;
-      document.head.appendChild(m);
-    }
+    setSEO({
+      title: "Simple Resume Format for Freshers in India (Free Template) | Resumly",
+      description:
+        "The best simple, ATS-friendly resume format for freshers in India. Download a free DOCX/PDF template and learn the ideal one-page structure.",
+      path: "/blog/simple-resume-format-freshers-india",
+      type: "article",
+      publishedTime: "2026-04-23",
+    });
   }, []);
 
   const sections = [
