@@ -9,6 +9,7 @@ import ResumePage from "./pages/ResumePage.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import BlogAIJobs from "./pages/BlogAIJobs.tsx";
 import BlogResumeMistakes from "./pages/BlogResumeMistakes.tsx";
+import BlogSimpleResumeFormat from "./pages/BlogSimpleResumeFormat.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/privacy" element={<PrivacyPolicy />} />
 <Route path="/blog/will-ai-replace-jobs-2026" element={<BlogAIJobs />} />
           <Route path="/blog/top-10-resume-mistakes-freshers-india" element={<BlogResumeMistakes />} />
+          <Route path="/blog/simple-resume-format-freshers-india" element={<BlogSimpleResumeFormat />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
