@@ -14,6 +14,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "How to Pass ATS Resume Screening in India (2026 Guide)",
+    excerpt:
+      "Most resumes are rejected by ATS before a human ever sees them. Here's exactly how Applicant Tracking Systems work — and how to beat them in 2026.",
+    category: "Resume Tips",
+    readTime: "7 min read",
+    date: "Apr 24, 2026",
+    url: "/blog/pass-ats-resume-screening-india",
+    internal: true,
+  },
+  {
     title: "Resume vs CV in India – What Freshers Must Know",
     excerpt:
       "Resume or CV? They're not the same. Learn the key differences, when to use each, and which one freshers in India should actually send to recruiters.",
