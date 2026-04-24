@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Star } from "lucide-react";
+import { ArrowRight, Shield, Star, FileSearch } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 import { useOneTimeRedirect } from "@/hooks/useOneTimeRedirect";
 
@@ -40,7 +40,7 @@ const HeroSection = () => {
               Get hired faster with ATS-optimized resumes powered by AI. Stand out from the crowd and land your dream job.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 mb-4">
               <Button
                 variant="hero"
                 size="lg"
@@ -60,6 +60,17 @@ const HeroSection = () => {
                 }
               >
                 See How It Works
+              </Button>
+            </div>
+
+            <div className="mb-8">
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-base px-8 py-6 w-full sm:w-auto"
+                onClick={() => navigate("/ats-checker")}
+              >
+                <FileSearch className="w-5 h-5 mr-1" /> Check ATS Score
               </Button>
             </div>
 

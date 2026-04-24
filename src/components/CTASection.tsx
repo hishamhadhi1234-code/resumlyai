@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, FileSearch } from "lucide-react";
 import { useOneTimeRedirect } from "@/hooks/useOneTimeRedirect";
 
 const BUILD_URL = "https://alarmpenguinmelt.com/hut48qswjv?key=6bd3167a40ceda1a37fbd420457b971d";
@@ -25,14 +25,24 @@ const CTASection = () => {
           <p className="text-muted-foreground mb-8">
             Join thousands of students and job seekers who landed their dream jobs with Resumly.
           </p>
-          <Button
-            variant="hero"
-            size="lg"
-            className="text-base px-10 py-6"
-            onClick={(e) => buildBtn.handleClick(e, () => navigate("/builder"))}
-          >
-            Build My Resume <ArrowRight className="w-5 h-5 ml-1" />
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Button
+              variant="hero"
+              size="lg"
+              className="text-base px-10 py-6"
+              onClick={(e) => buildBtn.handleClick(e, () => navigate("/builder"))}
+            >
+              Build My Resume <ArrowRight className="w-5 h-5 ml-1" />
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="text-base px-10 py-6"
+              onClick={() => navigate("/ats-checker")}
+            >
+              <FileSearch className="w-5 h-5 mr-1" /> Check ATS Score
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>
