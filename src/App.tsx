@@ -12,6 +12,7 @@ import BlogResumeMistakes from "./pages/BlogResumeMistakes.tsx";
 import BlogSimpleResumeFormat from "./pages/BlogSimpleResumeFormat.tsx";
 import BlogBestSkills from "./pages/BlogBestSkills.tsx";
 import BlogFirstJobNoExperience from "./pages/BlogFirstJobNoExperience.tsx";
+import AtsChecker from "./pages/AtsChecker.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/blog/simple-resume-format-freshers-india" element={<BlogSimpleResumeFormat />} />
           <Route path="/blog/best-skills-resume-freshers-india" element={<BlogBestSkills />} />
           <Route path="/blog/first-job-india-without-experience" element={<BlogFirstJobNoExperience />} />
+          <Route path="/ats-checker" element={<AtsChecker />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
