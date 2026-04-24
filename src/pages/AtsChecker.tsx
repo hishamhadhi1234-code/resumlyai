@@ -39,7 +39,8 @@ const AtsChecker = () => {
     setSEO({
       title: "Free AI ATS Resume Score Checker | Resumly",
       description: "Upload your resume and instantly check its ATS score with AI. Get keyword analysis, formatting feedback, and improvement tips.",
-      canonical: "/ats-checker",
+      path: "/ats-checker",
+      type: "website",
     });
   }, []);
 
