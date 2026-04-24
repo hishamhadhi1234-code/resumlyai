@@ -13,6 +13,7 @@ import BlogSimpleResumeFormat from "./pages/BlogSimpleResumeFormat.tsx";
 import BlogBestSkills from "./pages/BlogBestSkills.tsx";
 import BlogFirstJobNoExperience from "./pages/BlogFirstJobNoExperience.tsx";
 import BlogResumeVsCV from "./pages/BlogResumeVsCV.tsx";
+import BlogPassATS from "./pages/BlogPassATS.tsx";
 import AtsChecker from "./pages/AtsChecker.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/blog/best-skills-resume-freshers-india" element={<BlogBestSkills />} />
           <Route path="/blog/first-job-india-without-experience" element={<BlogFirstJobNoExperience />} />
           <Route path="/blog/resume-vs-cv-india-freshers" element={<BlogResumeVsCV />} />
+          <Route path="/blog/pass-ats-resume-screening-india" element={<BlogPassATS />} />
           <Route path="/ats-checker" element={<AtsChecker />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
