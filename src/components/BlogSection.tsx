@@ -14,6 +14,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "Resume vs CV in India – What Freshers Must Know",
+    excerpt:
+      "Resume or CV? They're not the same. Learn the key differences, when to use each, and which one freshers in India should actually send to recruiters.",
+    category: "Resume Tips",
+    readTime: "6 min read",
+    date: "Apr 24, 2026",
+    url: "/blog/resume-vs-cv-india-freshers",
+    internal: true,
+  },
+  {
     title: "How to Get Your First Job in India Without Experience",
     excerpt:
       "No experience? No problem. A practical 4-step playbook to land your first job in India — from resume to networking — even when you're starting from scratch.",
