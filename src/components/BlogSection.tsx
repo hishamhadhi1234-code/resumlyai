@@ -14,6 +14,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "Best Resume Templates for Freshers in India (Free & Simple)",
+    excerpt:
+      "Confused by hundreds of resume designs? Here are the best free, simple, ATS-friendly templates for freshers in India — and the ones to avoid.",
+    category: "Resume Tips",
+    readTime: "6 min read",
+    date: "Apr 25, 2026",
+    url: "/blog/best-resume-templates-freshers-india",
+    internal: true,
+  },
+  {
     title: "How to Pass ATS Resume Screening in India (2026 Guide)",
     excerpt:
       "Most resumes are rejected by ATS before a human ever sees them. Here's exactly how Applicant Tracking Systems work — and how to beat them in 2026.",
