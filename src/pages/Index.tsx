@@ -1,32 +1,37 @@
+import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import FeaturesSection from "@/components/FeaturesSection";
-import HowItWorksSection from "@/components/HowItWorksSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import FAQSection from "@/components/FAQSection";
-import BlogSection from "@/components/BlogSection";
-import CTASection from "@/components/CTASection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
-import AdUnit from "@/components/AdUnit";
+
+// Below-the-fold sections are lazy-loaded to shrink the initial JS payload.
+// They render in the same order, just fetched after the hero is interactive.
+const FeaturesSection = lazy(() => import("@/components/FeaturesSection"));
+const HowItWorksSection = lazy(() => import("@/components/HowItWorksSection"));
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
+const BlogSection = lazy(() => import("@/components/BlogSection"));
+const CTASection = lazy(() => import("@/components/CTASection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
+const Footer = lazy(() => import("@/components/Footer"));
+const AdUnit = lazy(() => import("@/components/AdUnit"));
 
 const Index = () => (
   <div className="min-h-screen">
     <Navbar />
     <HeroSection />
-    <div className="container mx-auto px-4 py-6">
-      <AdUnit slot="2931159552" />
-    </div>
-    <BlogSection />
-    <HowItWorksSection />
-    <TestimonialsSection />
-    <FeaturesSection />
-    <FAQSection />
-    <CTASection />
-    <ContactSection />
-    <Footer />
+    <Suspense fallback={null}>
+      <div className="container mx-auto px-4 py-6">
+        <AdUnit slot="2931159552" />
+      </div>
+      <BlogSection />
+      <HowItWorksSection />
+      <TestimonialsSection />
+      <FeaturesSection />
+      <FAQSection />
+      <CTASection />
+      <ContactSection />
+      <Footer />
+    </Suspense>
   </div>
 );
 
 export default Index;
-
