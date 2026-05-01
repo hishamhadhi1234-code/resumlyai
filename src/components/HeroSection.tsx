@@ -93,6 +93,10 @@ const HeroSection = () => {
               alt="AI-powered resume builder preview"
               width={1024}
               height={768}
+              loading="eager"
+              decoding="async"
+              // @ts-expect-error fetchpriority is a valid HTML attribute not yet in React types
+              fetchpriority="high"
               className="rounded-2xl shadow-lg animate-float"
             />
           </motion.div>
