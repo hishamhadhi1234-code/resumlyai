@@ -8,11 +8,15 @@ import BlogSection from "@/components/BlogSection";
 import CTASection from "@/components/CTASection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import AdUnit from "@/components/AdUnit";
 
 const Index = () => (
   <div className="min-h-screen">
     <Navbar />
     <HeroSection />
+    <div className="container mx-auto px-4 py-6">
+      <AdUnit slot="2931159552" />
+    </div>
     <BlogSection />
     <HowItWorksSection />
     <TestimonialsSection />
@@ -25,3 +29,4 @@ const Index = () => (
 );
 
 export default Index;
+
