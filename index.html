@@ -1,16 +1,44 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW2NS1S99V"></script>
+    <!-- Defer third-party scripts (Google Analytics + AdSense) until the browser is idle
+         to reduce Max Potential First Input Delay without affecting tracking or ads. -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-KW2NS1S99V');
+      (function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-KW2NS1S99V');
+
+        function loadThirdParty() {
+          var ga = document.createElement('script');
+          ga.async = true;
+          ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-KW2NS1S99V';
+          document.head.appendChild(ga);
+
+          var ads = document.createElement('script');
+          ads.async = true;
+          ads.crossOrigin = 'anonymous';
+          ads.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724637936499460';
+          document.head.appendChild(ads);
+        }
+
+        function schedule() {
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadThirdParty, { timeout: 4000 });
+          } else {
+            setTimeout(loadThirdParty, 2500);
+          }
+        }
+
+        if (document.readyState === 'complete') {
+          schedule();
+        } else {
+          window.addEventListener('load', schedule, { once: true });
+        }
+      })();
     </script>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724637936499460" crossorigin="anonymous"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resumly - Smart Resumes. Better Jobs.</title>
