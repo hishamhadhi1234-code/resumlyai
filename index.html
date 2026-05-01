@@ -4,17 +4,18 @@
     <!-- Preconnect to font origins to shorten the critical request chain (HTML -> CSS -> Google Fonts -> woff2) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Load Google Fonts non-render-blocking to improve FCP. font-display: swap ensures text shows in fallback first. -->
+    <!-- Load Google Fonts non-render-blocking to improve FCP. font-display: swap ensures text shows in fallback first.
+         Weights trimmed to those actually used in the app (400, 500, 600, 700, 800) to reduce font payload. -->
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       />
     </noscript>
 
