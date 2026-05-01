@@ -27,9 +27,12 @@ const AdUnit = ({
   // Defer rendering + initialization of the ad until the browser is idle,
   // so AdSense doesn't trigger forced reflows during the critical render path / LCP.
   useEffect(() => {
+    const w = window as Window & {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+    };
     const schedule =
-      typeof window !== "undefined" && typeof window.requestIdleCallback === "function"
-        ? (cb: () => void) => window.requestIdleCallback!(cb, { timeout: 3000 })
+      typeof w.requestIdleCallback === "function"
+        ? (cb: () => void) => w.requestIdleCallback!(cb, { timeout: 3000 })
         : (cb: () => void) => window.setTimeout(cb, 1500);
 
     const id = schedule(() => setReady(true));
