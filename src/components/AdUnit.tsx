@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 declare global {
   interface Window {
     adsbygoogle: unknown[];
-    requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
   }
 }
 
