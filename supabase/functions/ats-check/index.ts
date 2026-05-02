@@ -4,6 +4,7 @@ Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
 
   try {
+
     const { resumeText, jobDescription } = await req.json();
 
     if (!resumeText || typeof resumeText !== "string" || resumeText.trim().length < 50) {
@@ -99,8 +100,9 @@ Score the resume on a 0-100 ATS scale.`;
     });
   } catch (e) {
     console.error("ats-check error:", e);
-    return new Response(JSON.stringify({ error: e instanceof Error ? e.message : "Unknown error" }), {
-      status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({ error: "An unexpected error occurred. Please try again." }),
+      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    );
   }
 });

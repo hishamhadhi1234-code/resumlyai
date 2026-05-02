@@ -23,8 +23,11 @@ const ResumePage = () => {
     if (!resumeRef.current) return;
     const printWindow = window.open("", "_blank");
     if (!printWindow) return;
+    const escapeHtml = (str: string) =>
+      str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    const safeTitle = escapeHtml(resume?.fullName || "Resume");
     printWindow.document.write(`
-      <html><head><title>${resume?.fullName || "Resume"} - Resume</title>
+      <html><head><title>${safeTitle} - Resume</title>
       <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', Arial, sans-serif; color: #1a1a2e; line-height: 1.5; padding: 40px; max-width: 800px; margin: 0 auto; }
