@@ -21,6 +21,7 @@ const BlogResumeVsCV = lazy(() => import("./pages/BlogResumeVsCV.tsx"));
 const BlogPassATS = lazy(() => import("./pages/BlogPassATS.tsx"));
 const BlogBestResumeTemplates = lazy(() => import("./pages/BlogBestResumeTemplates.tsx"));
 const AtsChecker = lazy(() => import("./pages/AtsChecker.tsx"));
+const Auth = lazy(() => import("./pages/Auth.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ const App = () => (
             <Route path="/blog/pass-ats-resume-screening-india" element={<BlogPassATS />} />
             <Route path="/blog/best-resume-templates-freshers-india" element={<BlogBestResumeTemplates />} />
             <Route path="/ats-checker" element={<AtsChecker />} />
+            <Route path="/auth" element={<Auth />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
