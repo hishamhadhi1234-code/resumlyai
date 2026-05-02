@@ -97,6 +97,12 @@ const AtsChecker = () => {
       toast({ title: "Upload a resume first", variant: "destructive" });
       return;
     }
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) {
+      toast({ title: "Please sign in", description: "Sign in to run an AI ATS analysis." });
+      navigate("/auth?redirect=/ats-checker");
+      return;
+    }
     setAnalyzing(true);
     setReport(null);
     try {
