@@ -21,6 +21,7 @@ const BlogResumeVsCV = lazy(() => import("./pages/BlogResumeVsCV.tsx"));
 const BlogPassATS = lazy(() => import("./pages/BlogPassATS.tsx"));
 const BlogBestResumeTemplates = lazy(() => import("./pages/BlogBestResumeTemplates.tsx"));
 const AtsChecker = lazy(() => import("./pages/AtsChecker.tsx"));
+const Auth = lazy(() => import("./pages/Auth.tsx"));
 
 const queryClient = new QueryClient();
 
