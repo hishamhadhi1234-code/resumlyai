@@ -46,6 +46,7 @@ const App = () => (
             <Route path="/blog/pass-ats-resume-screening-india" element={<BlogPassATS />} />
             <Route path="/blog/best-resume-templates-freshers-india" element={<BlogBestResumeTemplates />} />
             <Route path="/ats-checker" element={<AtsChecker />} />
+            <Route path="/auth" element={<Auth />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
