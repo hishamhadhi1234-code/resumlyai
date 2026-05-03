@@ -14,6 +14,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "Ultimate Guide to Resume for Freshers in India (2026)",
+    excerpt:
+      "Everything freshers in India need to build a job-winning, ATS-friendly resume in 2026 — formats, skills, projects, ATS tips, templates, and a final checklist.",
+    category: "Resume Tips",
+    readTime: "10 min read",
+    date: "May 2, 2026",
+    url: "/blog/ultimate-guide-resume-freshers-india-2026",
+    internal: true,
+  },
+  {
     title: "Best Resume Templates for Freshers in India (Free & Simple)",
     excerpt:
       "Confused by hundreds of resume designs? Here are the best free, simple, ATS-friendly templates for freshers in India — and the ones to avoid.",
