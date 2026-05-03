@@ -19,35 +19,43 @@ const ResumePage = () => {
     else navigate("/builder");
   }, [navigate]);
 
-  const handleDownload = () => {
+  const [downloading, setDownloading] = useState(false);
+
+  const handleDownload = async () => {
     if (!resumeRef.current) return;
-    const printWindow = window.open("", "_blank");
-    if (!printWindow) return;
-    const escapeHtml = (str: string) =>
-      str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-    const safeTitle = escapeHtml(resume?.fullName || "Resume");
-    printWindow.document.write(`
-      <html><head><title>${safeTitle} - Resume</title>
-      <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', Arial, sans-serif; color: #1a1a2e; line-height: 1.5; padding: 40px; max-width: 800px; margin: 0 auto; }
-        h1 { font-size: 24px; margin-bottom: 4px; }
-        h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4361ee; border-bottom: 2px solid #4361ee; padding-bottom: 4px; margin: 20px 0 12px; }
-        h3 { font-size: 15px; margin-bottom: 2px; }
-        .contact { font-size: 13px; color: #555; margin-bottom: 16px; }
-        .summary { font-size: 14px; color: #333; margin-bottom: 8px; }
-        .entry { margin-bottom: 12px; }
-        .meta { font-size: 13px; color: #666; }
-        .desc { font-size: 13px; color: #444; margin-top: 4px; }
-        .skills { display: flex; flex-wrap: wrap; gap: 6px; }
-        .skill { background: #eef1ff; color: #4361ee; padding: 3px 10px; border-radius: 4px; font-size: 12px; }
-        .projects .tech { font-size: 12px; color: #888; font-style: italic; }
-        @media print { body { padding: 20px; } }
-      </style></head><body>
-      ${resumeRef.current.innerHTML}
-      <script>window.print();window.close();</script></body></html>
-    `);
-    printWindow.document.close();
+    setDownloading(true);
+    try {
+      const [{ default: html2canvas }, { default: jsPDF }] = await Promise.all([
+        import("html2canvas"),
+        import("jspdf"),
+      ]);
+      const canvas = await html2canvas(resumeRef.current, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#ffffff",
+      });
+      const imgData = canvas.toDataURL("image/jpeg", 0.95);
+      const pdf = new jsPDF({ unit: "pt", format: "a4", orientation: "portrait" });
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = pageWidth;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+      let heightLeft = imgHeight;
+      let position = 0;
+      pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+      while (heightLeft > 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+      }
+      const safeName = (resume?.fullName || "resume").replace(/[^a-z0-9]+/gi, "_");
+      pdf.save(`${safeName}_resume.pdf`);
+    } finally {
+      setDownloading(false);
+    }
   };
 
   if (!resume) return null;
