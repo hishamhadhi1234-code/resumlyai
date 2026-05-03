@@ -126,8 +126,8 @@ const ResumePage = () => {
               )}
 
               <div className="flex flex-col gap-3">
-                <Button variant="hero" onClick={handleDownload} className="w-full">
-                  <Download className="w-4 h-4 mr-2" /> Download PDF
+                <Button variant="hero" onClick={handleDownload} disabled={downloading} className="w-full">
+                  <Download className="w-4 h-4 mr-2" /> {downloading ? "Generating PDF..." : "Download PDF"}
                 </Button>
                 <Button variant="outline" onClick={() => navigate("/builder")} className="w-full">
                   <ArrowLeft className="w-4 h-4 mr-2" /> Edit Resume
