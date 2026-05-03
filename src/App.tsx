@@ -20,6 +20,7 @@ const BlogFirstJobNoExperience = lazy(() => import("./pages/BlogFirstJobNoExperi
 const BlogResumeVsCV = lazy(() => import("./pages/BlogResumeVsCV.tsx"));
 const BlogPassATS = lazy(() => import("./pages/BlogPassATS.tsx"));
 const BlogBestResumeTemplates = lazy(() => import("./pages/BlogBestResumeTemplates.tsx"));
+const BlogUltimateGuide = lazy(() => import("./pages/BlogUltimateGuide.tsx"));
 const AtsChecker = lazy(() => import("./pages/AtsChecker.tsx"));
 const Auth = lazy(() => import("./pages/Auth.tsx"));
 
