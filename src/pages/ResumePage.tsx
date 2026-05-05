@@ -219,6 +219,9 @@ const ResumePage = () => {
                 <Button variant="hero" onClick={handleDownload} disabled={downloading} className="w-full">
                   <Download className="w-4 h-4 mr-2" /> {downloading ? "Generating PDF..." : "Download PDF"}
                 </Button>
+                <Button variant="outline" onClick={handleDownloadDocx} disabled={downloadingDocx} className="w-full">
+                  <Download className="w-4 h-4 mr-2" /> {downloadingDocx ? "Generating DOCX..." : "Download DOCX"}
+                </Button>
                 <Button variant="outline" onClick={() => navigate("/builder")} className="w-full">
                   <ArrowLeft className="w-4 h-4 mr-2" /> Edit Resume
                 </Button>
