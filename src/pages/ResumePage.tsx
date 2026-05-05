@@ -20,6 +20,96 @@ const ResumePage = () => {
   }, [navigate]);
 
   const [downloading, setDownloading] = useState(false);
+  const [downloadingDocx, setDownloadingDocx] = useState(false);
+
+  const handleDownloadDocx = async () => {
+    if (!resume) return;
+    setDownloadingDocx(true);
+    try {
+      const docx = await import("docx");
+      const { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, BorderStyle } = docx;
+      const { saveAs } = await import("file-saver");
+
+      const accent = "4361EE";
+      const sectionHeading = (text: string) =>
+        new Paragraph({
+          spacing: { before: 240, after: 120 },
+          border: { bottom: { color: accent, size: 12, style: BorderStyle.SINGLE, space: 1 } },
+          children: [new TextRun({ text: text.toUpperCase(), bold: true, color: accent, size: 22 })],
+        });
+
+      const allSkillsArr = [
+        ...resume.skills.split(",").map(s => s.trim()).filter(Boolean),
+        ...resume.suggestedSkills,
+      ];
+
+      const children: any[] = [
+        new Paragraph({
+          alignment: AlignmentType.LEFT,
+          children: [new TextRun({ text: resume.fullName, bold: true, size: 40 })],
+        }),
+        new Paragraph({
+          children: [new TextRun({ text: [resume.email, resume.phone, resume.location].filter(Boolean).join(" • "), size: 20, color: "555555" })],
+        }),
+      ];
+      if (resume.targetRole) {
+        children.push(new Paragraph({ children: [new TextRun({ text: resume.targetRole, color: accent, bold: true, size: 22 })] }));
+      }
+      if (resume.summary) {
+        children.push(sectionHeading("Professional Summary"));
+        children.push(new Paragraph({ children: [new TextRun({ text: resume.summary, size: 22 })] }));
+      }
+      if (allSkillsArr.length) {
+        children.push(sectionHeading("Skills"));
+        children.push(new Paragraph({ children: [new TextRun({ text: allSkillsArr.join(" • "), size: 22 })] }));
+      }
+      const exps = resume.enhancedExperience.filter(e => e.company || e.role);
+      if (exps.length) {
+        children.push(sectionHeading("Experience"));
+        exps.forEach(exp => {
+          children.push(new Paragraph({
+            spacing: { before: 120 },
+            children: [new TextRun({ text: `${exp.role}${exp.company ? ` at ${exp.company}` : ""}`, bold: true, size: 24 })],
+          }));
+          if (exp.fromDate || exp.toDate) {
+            const from = exp.fromDate ? format(new Date(exp.fromDate), "MMM yyyy") : "";
+            const to = exp.toDate ? format(new Date(exp.toDate), "MMM yyyy") : "Present";
+            children.push(new Paragraph({ children: [new TextRun({ text: `${from} – ${to}`, italics: true, size: 20, color: "666666" })] }));
+          }
+          if (exp.description) {
+            children.push(new Paragraph({ children: [new TextRun({ text: exp.description, size: 22 })] }));
+          }
+        });
+      }
+      const projs = resume.projects.filter(p => p.name);
+      if (projs.length) {
+        children.push(sectionHeading("Projects"));
+        projs.forEach(p => {
+          children.push(new Paragraph({ spacing: { before: 120 }, children: [new TextRun({ text: p.name, bold: true, size: 24 })] }));
+          if (p.description) children.push(new Paragraph({ children: [new TextRun({ text: p.description, size: 22 })] }));
+          if (p.technologies) children.push(new Paragraph({ children: [new TextRun({ text: p.technologies, italics: true, size: 20, color: "888888" })] }));
+        });
+      }
+      const edus = resume.education.filter(e => e.institution);
+      if (edus.length) {
+        children.push(sectionHeading("Education"));
+        edus.forEach(edu => {
+          children.push(new Paragraph({ spacing: { before: 120 }, children: [new TextRun({ text: edu.degree, bold: true, size: 24 })] }));
+          children.push(new Paragraph({ children: [new TextRun({ text: `${edu.institution}${edu.year ? ` • ${edu.year}` : ""}`, size: 22, color: "666666" })] }));
+        });
+      }
+
+      const doc = new Document({
+        styles: { default: { document: { run: { font: "Calibri" } } } },
+        sections: [{ properties: { page: { margin: { top: 1080, bottom: 1080, left: 1080, right: 1080 } } }, children }],
+      });
+      const blob = await Packer.toBlob(doc);
+      const safeName = (resume.fullName || "resume").replace(/[^a-z0-9]+/gi, "_");
+      saveAs(blob, `${safeName}_resume.docx`);
+    } finally {
+      setDownloadingDocx(false);
+    }
+  };
 
   const handleDownload = async () => {
     if (!resumeRef.current) return;
@@ -128,6 +218,9 @@ const ResumePage = () => {
               <div className="flex flex-col gap-3">
                 <Button variant="hero" onClick={handleDownload} disabled={downloading} className="w-full">
                   <Download className="w-4 h-4 mr-2" /> {downloading ? "Generating PDF..." : "Download PDF"}
+                </Button>
+                <Button variant="outline" onClick={handleDownloadDocx} disabled={downloadingDocx} className="w-full">
+                  <Download className="w-4 h-4 mr-2" /> {downloadingDocx ? "Generating DOCX..." : "Download DOCX"}
                 </Button>
                 <Button variant="outline" onClick={() => navigate("/builder")} className="w-full">
                   <ArrowLeft className="w-4 h-4 mr-2" /> Edit Resume
