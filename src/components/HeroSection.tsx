@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Star, FileSearch } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
+import heroImage640 from "@/assets/hero-image-640.jpg";
 import { useOneTimeRedirect } from "@/hooks/useOneTimeRedirect";
 
 const BUILD_URL = "https://alarmpenguinmelt.com/hut48qswjv?key=6bd3167a40ceda1a37fbd420457b971d";
@@ -90,6 +91,8 @@ const HeroSection = () => {
           >
             <img
               src={heroImage}
+              srcSet={`${heroImage640} 640w, ${heroImage} 960w`}
+              sizes="(min-width: 1280px) 628px, (min-width: 1024px) 50vw, 0px"
               alt="AI-powered resume builder preview"
               width={960}
               height={720}
