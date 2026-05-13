@@ -27,6 +27,7 @@ const Navbar = () => {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
+          <Link to="/resume-templates" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Templates</Link>
           <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Features</a>
           <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">How it Works</a>
           <a href="#blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Blog</a>
@@ -41,6 +42,7 @@ const Navbar = () => {
 
       {isOpen && (
         <div className="md:hidden glass border-t border-border p-4 flex flex-col gap-4">
+          <Link to="/resume-templates" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>Templates</Link>
           <a href="#features" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>Features</a>
           <a href="#how-it-works" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>How it Works</a>
           <a href="#blog" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>Blog</a>

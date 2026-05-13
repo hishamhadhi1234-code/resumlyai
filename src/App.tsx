@@ -23,6 +23,8 @@ const BlogBestResumeTemplates = lazy(() => import("./pages/BlogBestResumeTemplat
 const BlogUltimateGuide = lazy(() => import("./pages/BlogUltimateGuide.tsx"));
 const AtsChecker = lazy(() => import("./pages/AtsChecker.tsx"));
 const Auth = lazy(() => import("./pages/Auth.tsx"));
+const ResumeTemplates = lazy(() => import("./pages/ResumeTemplates.tsx"));
+const ResumeTemplateDetail = lazy(() => import("./pages/ResumeTemplateDetail.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -49,6 +51,8 @@ const App = () => (
             <Route path="/blog/ultimate-guide-resume-freshers-india-2026" element={<BlogUltimateGuide />} />
             <Route path="/ats-checker" element={<AtsChecker />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/resume-templates" element={<ResumeTemplates />} />
+            <Route path="/resume-templates/:slug" element={<ResumeTemplateDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
