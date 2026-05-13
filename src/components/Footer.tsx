@@ -11,7 +11,13 @@ const Footer = () => (
           </div>
           <span className="text-lg font-bold">Resumly</span>
         </Link>
-        <div className="flex items-center gap-6">
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+          <Link to="/resume-templates" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Resume Templates
+          </Link>
+          <Link to="/ats-checker" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            ATS Checker
+          </Link>
           <Link to="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             Privacy Policy
           </Link>
