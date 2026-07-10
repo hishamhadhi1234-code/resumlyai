@@ -24,6 +24,16 @@ const blogs: Blog[] = [
     internal: true,
   },
   {
+    title: "How to Make a Resume That Gets Past Computers and Gets Interviews in 2026",
+    excerpt:
+      "Learn how ATS works and how to format your resume so it passes computer screening and reaches real recruiters in 2026.",
+    category: "Resume Tips",
+    readTime: "6 min read",
+    date: "May 19, 2026",
+    url: "/blog/resume-gets-past-computers-interviews-2026",
+    internal: true,
+  },
+  {
     title: "How to Prepare for Your First Job Interview in India (2026 Guide)",
     excerpt:
       "A step-by-step guide for freshers in India — research, common questions, communication, dress code, online interviews, and confidence tips to ace your first interview.",
