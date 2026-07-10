@@ -24,6 +24,16 @@ const blogs: Blog[] = [
     internal: true,
   },
   {
+    title: "How to Prepare for Your First Job Interview in India (2026 Guide)",
+    excerpt:
+      "A step-by-step guide for freshers in India — research, common questions, communication, dress code, online interviews, and confidence tips to ace your first interview.",
+    category: "Interviews",
+    readTime: "8 min read",
+    date: "May 18, 2026",
+    url: "/blog/first-job-interview-india-2026",
+    internal: true,
+  },
+  {
     title: "Ultimate Guide to Resume for Freshers in India (2026)",
     excerpt:
       "Everything freshers in India need to build a job-winning, ATS-friendly resume in 2026 — formats, skills, projects, ATS tips, templates, and a final checklist.",
