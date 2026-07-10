@@ -14,13 +14,13 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
-    title: "How to Prepare for Your First Job Interview in India (2026 Guide)",
+    title: "How to Make a Resume That Gets Past Computers and Gets Interviews in 2026",
     excerpt:
-      "A step-by-step guide for freshers in India — research, common questions, communication, dress code, online interviews, and confidence tips to ace your first interview.",
-    category: "Interviews",
-    readTime: "8 min read",
-    date: "May 18, 2026",
-    url: "/blog/first-job-interview-india-2026",
+      "Learn how ATS works and how to format your resume so it passes computer screening and reaches real recruiters in 2026.",
+    category: "Resume Tips",
+    readTime: "6 min read",
+    date: "May 19, 2026",
+    url: "/blog/resume-gets-past-computers-interviews-2026",
     internal: true,
   },
   {
