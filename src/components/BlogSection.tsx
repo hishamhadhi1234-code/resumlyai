@@ -14,6 +14,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "Resume vs CV: What's the Difference? A Guide for Indian Job Seekers",
+    excerpt:
+      "Confused between a resume and a CV? Learn the key differences, when to use each, and what Indian companies prefer in 2026.",
+    category: "Career Advice",
+    readTime: "5 min read",
+    date: "May 21, 2026",
+    url: "/blog/resume-vs-cv-difference-indian-job-seekers",
+    internal: true,
+  },
+  {
     title: "Resume Skills for Freshers in 2026: What to Add and Avoid",
     excerpt:
       "Learn which technical, soft, and industry-specific skills to put in your resume as a fresher in 2026 — plus common mistakes to avoid.",
