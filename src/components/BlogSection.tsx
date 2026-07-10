@@ -14,13 +14,13 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
-    title: "Resume Skills for Freshers in 2026: What to Add and Avoid",
+    title: "Resume vs CV: What's the Difference? A Guide for Indian Job Seekers",
     excerpt:
-      "Learn which technical, soft, and industry-specific skills to put in your resume as a fresher in 2026 — plus common mistakes to avoid.",
-    category: "Resume Tips",
-    readTime: "6 min read",
-    date: "May 20, 2026",
-    url: "/blog/resume-skills-freshers-2026-guide",
+      "Confused between a resume and a CV? Learn the key differences, when to use each, and what Indian companies prefer in 2026.",
+    category: "Career Advice",
+    readTime: "5 min read",
+    date: "May 21, 2026",
+    url: "/blog/resume-vs-cv-difference-indian-job-seekers",
     internal: true,
   },
   {
