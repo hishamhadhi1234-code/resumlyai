@@ -14,13 +14,13 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
-    title: "How to Make a Resume That Gets Past Computers and Gets Interviews in 2026",
+    title: "Resume Skills for Freshers in 2026: What to Add and Avoid",
     excerpt:
-      "Learn how ATS works and how to format your resume so it passes computer screening and reaches real recruiters in 2026.",
+      "Learn which technical, soft, and industry-specific skills to put in your resume as a fresher in 2026 — plus common mistakes to avoid.",
     category: "Resume Tips",
     readTime: "6 min read",
-    date: "May 19, 2026",
-    url: "/blog/resume-gets-past-computers-interviews-2026",
+    date: "May 20, 2026",
+    url: "/blog/resume-skills-freshers-2026-guide",
     internal: true,
   },
   {

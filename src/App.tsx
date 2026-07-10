@@ -21,7 +21,7 @@ const BlogResumeVsCV = lazy(() => import("./pages/BlogResumeVsCV.tsx"));
 const BlogPassATS = lazy(() => import("./pages/BlogPassATS.tsx"));
 const BlogBestResumeTemplates = lazy(() => import("./pages/BlogBestResumeTemplates.tsx"));
 const BlogUltimateGuide = lazy(() => import("./pages/BlogUltimateGuide.tsx"));
-const BlogResumePastComputers = lazy(() => import("./pages/BlogResumePastComputers.tsx"));
+const BlogResumeSkills2026 = lazy(() => import("./pages/BlogResumeSkills2026.tsx"));
 const AtsChecker = lazy(() => import("./pages/AtsChecker.tsx"));
 const Auth = lazy(() => import("./pages/Auth.tsx"));
 const ResumeTemplates = lazy(() => import("./pages/ResumeTemplates.tsx"));
@@ -50,7 +50,7 @@ const App = () => (
             <Route path="/blog/pass-ats-resume-screening-india" element={<BlogPassATS />} />
             <Route path="/blog/best-resume-templates-freshers-india" element={<BlogBestResumeTemplates />} />
             <Route path="/blog/ultimate-guide-resume-freshers-india-2026" element={<BlogUltimateGuide />} />
-            <Route path="/blog/resume-gets-past-computers-interviews-2026" element={<BlogResumePastComputers />} />
+            <Route path="/blog/resume-skills-freshers-2026-guide" element={<BlogResumeSkills2026 />} />
             <Route path="/ats-checker" element={<AtsChecker />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/resume-templates" element={<ResumeTemplates />} />
