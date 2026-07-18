@@ -66,4 +66,29 @@ export function setSEO({
   upsertMeta("name", "twitter:title", title);
   upsertMeta("name", "twitter:description", description);
   upsertMeta("name", "twitter:image", image);
+
+  // Article JSON-LD for blog posts
+  const ldId = "route-jsonld";
+  document.getElementById(ldId)?.remove();
+  if (type === "article") {
+    const ld = document.createElement("script");
+    ld.type = "application/ld+json";
+    ld.id = ldId;
+    ld.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: title,
+      description,
+      image,
+      author: { "@type": "Organization", name: author },
+      publisher: {
+        "@type": "Organization",
+        name: "Resumly",
+        logo: { "@type": "ImageObject", url: `${SITE_URL}/placeholder.svg` },
+      },
+      datePublished: publishedTime,
+      mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    });
+    document.head.appendChild(ld);
+  }
 }
