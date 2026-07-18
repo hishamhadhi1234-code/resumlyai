@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
 
@@ -9,7 +10,27 @@ const faqs = [
   { q: "Is my data safe?", a: "Yes, your data is encrypted and secure. We never share your personal information with third parties." },
 ];
 
-const FAQSection = () => (
+const FAQSection = () => {
+  useEffect(() => {
+    const id = "faq-jsonld";
+    document.getElementById(id)?.remove();
+    const s = document.createElement("script");
+    s.type = "application/ld+json";
+    s.id = id;
+    s.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    });
+    document.head.appendChild(s);
+    return () => { document.getElementById(id)?.remove(); };
+  }, []);
+
+  return (
   <section className="py-20">
     <div className="container mx-auto px-4 max-w-3xl">
       <motion.div
@@ -33,6 +54,7 @@ const FAQSection = () => (
       </Accordion>
     </div>
   </section>
-);
+  );
+};
 
 export default FAQSection;
