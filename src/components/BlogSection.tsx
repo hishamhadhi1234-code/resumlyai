@@ -1,5 +1,6 @@
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Clock } from "lucide-react";
+import { ArrowUpRight, Clock, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 
 type Blog = {
@@ -190,78 +191,148 @@ const blogs: Blog[] = [
   },
 ];
 
-const BlogSection = () => (
-  <section id="blog" className="py-20">
-    <div className="container mx-auto px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Career <span className="text-gradient">Insights & Blogs</span>
-        </h2>
-        <p className="text-muted-foreground text-sm max-w-xl mx-auto">
-          Hand-picked reads on resumes, interviews, placements & career growth.
-        </p>
-      </motion.div>
+const BlogSection = () => {
+  const [query, setQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState<string>("All");
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {blogs.map((b, i) => {
-          const cardClass =
-            "group p-6 rounded-2xl bg-gradient-card border border-border hover:border-primary/40 transition-all hover:-translate-y-1 flex flex-col";
-          const inner = (
-            <>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary">
-                  {b.category}
-                </span>
-                <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-              </div>
-              <h3 className="font-semibold text-base mb-2 leading-snug group-hover:text-primary transition-colors">
-                {b.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
-                {b.excerpt}
-              </p>
-              <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                <span>{b.date}</span>
-                <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
-                <span className="flex items-center gap-1">
-                  <Clock className="w-3 h-3" /> {b.readTime}
-                </span>
-              </div>
-            </>
-          );
-          const motionProps = {
-            initial: { opacity: 0, y: 20 },
-            whileInView: { opacity: 1, y: 0 },
-            viewport: { once: true },
-            transition: { delay: i * 0.08 },
-            className: cardClass,
-          };
-          return b.internal ? (
-            <motion.div key={b.title} {...motionProps}>
-              <Link to={b.url} className="contents">
-                {inner}
-              </Link>
-            </motion.div>
-          ) : (
-            <motion.a
-              key={b.title}
-              href={b.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              {...motionProps}
-            >
-              {inner}
-            </motion.a>
-          );
-        })}
+  const categories = useMemo(() => {
+    const set = new Set<string>();
+    blogs.forEach((b) => set.add(b.category));
+    return ["All", ...Array.from(set)];
+  }, []);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return blogs.filter((b) => {
+      const matchesCategory = activeCategory === "All" || b.category === activeCategory;
+      if (!matchesCategory) return false;
+      if (!q) return true;
+      return (
+        b.title.toLowerCase().includes(q) ||
+        b.excerpt.toLowerCase().includes(q) ||
+        b.category.toLowerCase().includes(q)
+      );
+    });
+  }, [query, activeCategory]);
+
+  return (
+    <section id="blog" className="py-20">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-10"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Career <span className="text-gradient">Insights & Blogs</span>
+          </h2>
+          <p className="text-muted-foreground text-sm max-w-xl mx-auto">
+            Hand-picked reads on resumes, interviews, placements & career growth.
+          </p>
+        </motion.div>
+
+        <div className="max-w-3xl mx-auto mb-6">
+          <label htmlFor="blog-search" className="sr-only">
+            Search blogs
+          </label>
+          <div className="relative">
+            <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
+            <input
+              id="blog-search"
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search resume tips, ATS, interviews…"
+              className="w-full pl-11 pr-4 py-3 rounded-full bg-gradient-card border border-border focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm transition-colors"
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
+          {categories.map((cat) => {
+            const active = cat === activeCategory;
+            return (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setActiveCategory(cat)}
+                className={
+                  "text-xs font-medium px-3 py-1.5 rounded-full border transition-colors " +
+                  (active
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "bg-transparent text-muted-foreground border-border hover:border-primary/40 hover:text-foreground")
+                }
+                aria-pressed={active}
+              >
+                {cat}
+              </button>
+            );
+          })}
+        </div>
+
+        {filtered.length === 0 ? (
+          <p className="text-center text-sm text-muted-foreground py-12">
+            No blogs found. Try a different search or category.
+          </p>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filtered.map((b, i) => {
+              const cardClass =
+                "group p-6 rounded-2xl bg-gradient-card border border-border hover:border-primary/40 transition-all hover:-translate-y-1 flex flex-col";
+              const inner = (
+                <>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary">
+                      {b.category}
+                    </span>
+                    <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </div>
+                  <h3 className="font-semibold text-base mb-2 leading-snug group-hover:text-primary transition-colors">
+                    {b.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                    {b.excerpt}
+                  </p>
+                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                    <span>{b.date}</span>
+                    <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3 h-3" /> {b.readTime}
+                    </span>
+                  </div>
+                </>
+              );
+              const motionProps = {
+                initial: { opacity: 0, y: 20 },
+                whileInView: { opacity: 1, y: 0 },
+                viewport: { once: true },
+                transition: { delay: Math.min(i * 0.05, 0.3) },
+                className: cardClass,
+              };
+              return b.internal ? (
+                <motion.div key={b.title} {...motionProps}>
+                  <Link to={b.url} className="contents">
+                    {inner}
+                  </Link>
+                </motion.div>
+              ) : (
+                <motion.a
+                  key={b.title}
+                  href={b.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  {...motionProps}
+                >
+                  {inner}
+                </motion.a>
+              );
+            })}
+          </div>
+        )}
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default BlogSection;
