@@ -1,0 +1,26 @@
+# Resumly
+
+> Free AI-powered resume builder for freshers and job seekers in India. Create ATS-friendly resumes in minutes — no login, no payment.
+
+## Pages
+
+- [Home](/): Free AI resume builder — ATS-friendly, no login.
+- [Resume Builder](/builder): Step-by-step AI resume builder.
+- [ATS Checker](/ats-checker): Score your resume against ATS systems.
+- [Resume Templates](/resume-templates): Gallery of free ATS-friendly resume templates.
+- [Privacy Policy](/privacy): How we handle your data.
+
+## Blog
+
+- [Ultimate Guide to Resume for Freshers in India (2026)](/blog/ultimate-guide-resume-freshers-india-2026)
+- [How to Get Your First Job in India Without Experience](/blog/first-job-india-without-experience)
+- [Top 10 Resume Mistakes Freshers Make](/blog/top-10-resume-mistakes-freshers-india)
+- [Simple Resume Format for Freshers in India](/blog/simple-resume-format-freshers-india)
+- [Best Skills to Add to Your Resume](/blog/best-skills-resume-freshers-india)
+- [Best Resume Templates for Freshers](/blog/best-resume-templates-freshers-india)
+- [Resume vs CV: What's the Difference?](/blog/resume-vs-cv-difference-indian-job-seekers)
+- [How to Pass ATS Resume Screening](/blog/pass-ats-resume-screening-india)
+- [How to Make a Resume That Gets Past Computers (2026)](/blog/resume-gets-past-computers-interviews-2026)
+- [Resume Skills for Freshers in 2026](/blog/resume-skills-freshers-2026-guide)
+- [How to Prepare for Your First Job Interview in India (2026)](/blog/first-job-interview-india-2026)
+- [Will AI Replace Jobs in 2026?](/blog/will-ai-replace-jobs-2026)
