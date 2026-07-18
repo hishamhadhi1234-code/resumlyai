@@ -1,7 +1,18 @@
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { setSEO } from "@/lib/seo";
 
-const PrivacyPolicy = () => (
+const PrivacyPolicy = () => {
+  useEffect(() => {
+    setSEO({
+      title: "Privacy Policy | Resumly",
+      description: "How Resumly collects, uses, and protects your personal data when you use our free AI resume builder and ATS checker.",
+      path: "/privacy",
+      type: "website",
+    });
+  }, []);
+  return (
   <div className="min-h-screen">
     <Navbar />
     <main className="container mx-auto px-4 pt-28 pb-16 max-w-3xl">
@@ -98,6 +109,7 @@ const PrivacyPolicy = () => (
     </main>
     <Footer />
   </div>
-);
+  );
+};
 
 export default PrivacyPolicy;

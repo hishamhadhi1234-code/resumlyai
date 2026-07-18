@@ -7,6 +7,7 @@ import { Download, ArrowLeft, CheckCircle, AlertCircle, Sparkles } from "lucide-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { GeneratedResume } from "@/types/resume";
+import { setSEO } from "@/lib/seo";
 
 const ResumePage = () => {
   const navigate = useNavigate();
@@ -14,6 +15,12 @@ const ResumePage = () => {
   const resumeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setSEO({
+      title: "Your Generated Resume — Download PDF or DOCX | Resumly",
+      description: "Preview your AI-generated ATS-friendly resume and download it as a PDF or DOCX file — no login required.",
+      path: "/resume",
+      type: "website",
+    });
     const stored = sessionStorage.getItem("resumly-resume");
     if (stored) setResume(JSON.parse(stored));
     else navigate("/builder");

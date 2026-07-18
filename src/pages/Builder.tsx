@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { setSEO } from "@/lib/seo";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -21,6 +22,14 @@ const emptyEdu: () => Education = () => ({ id: crypto.randomUUID(), institution:
 const Builder = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
+  useEffect(() => {
+    setSEO({
+      title: "Resume Builder — Create Your AI Resume | Resumly",
+      description: "Build an ATS-friendly resume step by step with Resumly's AI. Add your experience, skills, and education, then generate a polished resume in minutes.",
+      path: "/builder",
+      type: "website",
+    });
+  }, []);
   const [data, setData] = useState<ResumeData>({
     fullName: "", email: "", phone: "", location: "", targetRole: "", skills: "",
     experience: [emptyExp()], projects: [emptyProj()], education: [emptyEdu()], jobDescription: "",
@@ -67,7 +76,7 @@ const Builder = () => {
               <div className="flex justify-between items-center">
                 <span className="text-sm font-medium">Experience Entry</span>
                 {data.experience.length > 1 && (
-                  <button onClick={() => setData({ ...data, experience: data.experience.filter(e => e.id !== exp.id) })}>
+                  <button aria-label="Delete experience entry" onClick={() => setData({ ...data, experience: data.experience.filter(e => e.id !== exp.id) })}>
                     <Trash2 className="w-4 h-4 text-destructive" />
                   </button>
                 )}
@@ -134,7 +143,7 @@ const Builder = () => {
               <div className="flex justify-between items-center">
                 <span className="text-sm font-medium">Project Entry</span>
                 {data.projects.length > 1 && (
-                  <button onClick={() => setData({ ...data, projects: data.projects.filter(p => p.id !== proj.id) })}>
+                  <button aria-label="Delete project entry" onClick={() => setData({ ...data, projects: data.projects.filter(p => p.id !== proj.id) })}>
                     <Trash2 className="w-4 h-4 text-destructive" />
                   </button>
                 )}
@@ -159,7 +168,7 @@ const Builder = () => {
               <div className="flex justify-between items-center">
                 <span className="text-sm font-medium">Education Entry</span>
                 {data.education.length > 1 && (
-                  <button onClick={() => setData({ ...data, education: data.education.filter(e => e.id !== edu.id) })}>
+                  <button aria-label="Delete education entry" onClick={() => setData({ ...data, education: data.education.filter(e => e.id !== edu.id) })}>
                     <Trash2 className="w-4 h-4 text-destructive" />
                   </button>
                 )}
