@@ -23,6 +23,7 @@ const BlogBestResumeTemplates = lazy(() => import("./pages/BlogBestResumeTemplat
 const BlogUltimateGuide = lazy(() => import("./pages/BlogUltimateGuide.tsx"));
 const BlogResumeVsCVDifference = lazy(() => import("./pages/BlogResumeVsCVDifference.tsx"));
 const BlogLinkedInGuide = lazy(() => import("./pages/BlogLinkedInGuide.tsx"));
+const BlogHighIncomeSkills = lazy(() => import("./pages/BlogHighIncomeSkills.tsx"));
 const AtsChecker = lazy(() => import("./pages/AtsChecker.tsx"));
 const Auth = lazy(() => import("./pages/Auth.tsx"));
 const ResumeTemplates = lazy(() => import("./pages/ResumeTemplates.tsx"));
@@ -53,6 +54,7 @@ const App = () => (
             <Route path="/blog/ultimate-guide-resume-freshers-india-2026" element={<BlogUltimateGuide />} />
             <Route path="/blog/resume-vs-cv-difference-indian-job-seekers" element={<BlogResumeVsCVDifference />} />
             <Route path="/blog/linkedin-guide-freshers-india-2026" element={<BlogLinkedInGuide />} />
+            <Route path="/blog/high-income-skills-learn-free-2026" element={<BlogHighIncomeSkills />} />
             <Route path="/ats-checker" element={<AtsChecker />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/resume-templates" element={<ResumeTemplates />} />

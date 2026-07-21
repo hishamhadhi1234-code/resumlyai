@@ -15,6 +15,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "25 High-Income Skills You Can Learn for Free in 2026",
+    excerpt:
+      "Discover 25 valuable skills you can learn for free — from AI and data analysis to copywriting and SEO — perfect for students, freshers, and professionals in India.",
+    category: "Career Advice",
+    readTime: "12 min read",
+    date: "July 21, 2026",
+    url: "/blog/high-income-skills-learn-free-2026",
+    internal: true,
+  },
+  {
     title: "The Complete LinkedIn Guide for Freshers in India (2026)",
     excerpt:
       "Learn how to build a professional LinkedIn profile, grow your network, attract recruiters and land your first job in India.",
