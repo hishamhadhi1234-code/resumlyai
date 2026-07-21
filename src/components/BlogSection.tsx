@@ -15,6 +15,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "The Complete LinkedIn Guide for Freshers in India (2026)",
+    excerpt:
+      "Learn how to build a professional LinkedIn profile, grow your network, attract recruiters and land your first job in India.",
+    category: "Career Advice",
+    readTime: "10 min read",
+    date: "July 21, 2026",
+    url: "/blog/linkedin-guide-freshers-india-2026",
+    internal: true,
+  },
+  {
     title: "Resume vs CV: What's the Difference? A Guide for Indian Job Seekers",
     excerpt:
       "Confused between a resume and a CV? Learn the key differences, when to use each, and what Indian companies prefer in 2026.",
