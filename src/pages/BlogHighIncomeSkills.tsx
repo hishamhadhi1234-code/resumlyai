@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar, Lightbulb, HelpCircle, CheckCircle, AlertTr
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogCTA from "@/components/BlogCTA";
 
 const BlogHighIncomeSkills = () => {
   useEffect(() => {
