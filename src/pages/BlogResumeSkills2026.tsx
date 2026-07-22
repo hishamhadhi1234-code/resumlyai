@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar, Lightbulb, Code, Users, Briefcase, ShieldCh
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogCTA from "@/components/BlogCTA";
 
 const BlogResumeSkills2026 = () => {
   useEffect(() => {
