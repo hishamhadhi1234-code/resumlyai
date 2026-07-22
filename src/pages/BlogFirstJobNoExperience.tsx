@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar, FileText, Send, GraduationCap, Users } from
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogCTA from "@/components/BlogCTA";
 
 const BlogFirstJobNoExperience = () => {
   useEffect(() => {
