@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar, Lightbulb, Code, Users, Briefcase, ShieldCh
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogCTA from "@/components/BlogCTA";
 
 const BlogResumeSkills2026 = () => {
   useEffect(() => {
@@ -99,6 +100,14 @@ const BlogResumeSkills2026 = () => {
               <li>Adaptability</li>
               <li>Creativity</li>
             </ul>
+
+            <BlogCTA
+              variant="inline"
+              title="Add these skills to your resume in one click"
+              description="Resumly's AI matches skills to your target job automatically."
+              buttonText="Try Free"
+            />
+
 
             <h2 className="text-2xl md:text-3xl font-bold mt-12 flex items-center gap-2">
               <Briefcase className="w-6 h-6 text-primary" /> Industry-Specific Skills

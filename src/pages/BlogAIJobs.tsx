@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogCTA from "@/components/BlogCTA";
 
 const BlogAIJobs = () => {
   useEffect(() => {
@@ -218,6 +219,11 @@ const BlogAIJobs = () => {
               Because 2026 isn't about humans vs AI. It's about humans <em>with</em> AI vs humans <em>without</em> it.
             </p>
           </article>
+
+          <BlogCTA
+            title="Future-Proof Your Career With a Standout Resume"
+            description="AI is reshaping hiring. Build an ATS-friendly, AI-optimized resume free — no login required."
+          />
 
           <div className="mt-16 pt-8 border-t border-border text-center">
             <Link

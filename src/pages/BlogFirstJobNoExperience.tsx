@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar, FileText, Send, GraduationCap, Users } from
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogCTA from "@/components/BlogCTA";
 
 const BlogFirstJobNoExperience = () => {
   useEffect(() => {
@@ -129,6 +130,14 @@ const BlogFirstJobNoExperience = () => {
                 </div>
               );
             })}
+
+            <BlogCTA
+              variant="inline"
+              title="Start with step 1 right now"
+              description="Build a strong fresher resume free — no login, no payment."
+              buttonText="Build Resume"
+            />
+
 
             <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg my-12">
               <h3 className="text-xl font-bold mb-3 mt-0">💡 One Last Thing to Remember</h3>
