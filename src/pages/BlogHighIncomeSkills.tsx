@@ -442,6 +442,20 @@ const BlogHighIncomeSkills = () => {
               Your future career starts with learning—and presenting your abilities in the best possible way.
             </p>
           </article>
+
+          <BlogCTA
+            title="Turn Your New Skills Into Job Offers"
+            description="Learned a high-income skill? Showcase it on an ATS-friendly resume built with Resumly's free AI resume builder — no login needed."
+          />
+
+          <div className="mt-16 pt-8 border-t border-border text-center">
+            <Link
+              to="/#blog"
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+            >
+              <ArrowLeft className="w-4 h-4" /> Read more articles
+            </Link>
+          </div>
         </motion.div>
       </div>
     </div>
