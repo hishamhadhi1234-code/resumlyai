@@ -96,6 +96,14 @@ const BlogBestSkills = () => {
               ))}
             </div>
 
+            <BlogCTA
+              variant="inline"
+              title="Not sure which skills to list?"
+              description="Resumly's AI picks the right skills for your target role."
+              buttonText="Try Free"
+            />
+
+
             <h2 className="text-2xl md:text-3xl font-bold mt-12 mb-4">
               Top Soft Skills for Freshers
             </h2>
