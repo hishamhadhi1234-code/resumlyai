@@ -220,6 +220,11 @@ const BlogAIJobs = () => {
             </p>
           </article>
 
+          <BlogCTA
+            title="Future-Proof Your Career With a Standout Resume"
+            description="AI is reshaping hiring. Build an ATS-friendly, AI-optimized resume free — no login required."
+          />
+
           <div className="mt-16 pt-8 border-t border-border text-center">
             <Link
               to="/#blog"
