@@ -15,6 +15,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "How AI Is Changing Hiring: What Every Job Seeker Should Know",
+    excerpt:
+      "Learn how Artificial Intelligence is transforming recruitment, what companies look for, and how job seekers in India can adapt and stand out.",
+    category: "AI & Future of Work",
+    readTime: "11 min read",
+    date: "July 23, 2026",
+    url: "/blog/ai-changing-hiring-job-seekers-guide",
+    internal: true,
+  },
+  {
     title: "25 High-Income Skills You Can Learn for Free in 2026",
     excerpt:
       "Discover 25 valuable skills you can learn for free — from AI and data analysis to copywriting and SEO — perfect for students, freshers, and professionals in India.",
