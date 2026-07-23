@@ -25,6 +25,9 @@ const BlogResumeVsCVDifference = lazy(() => import("./pages/BlogResumeVsCVDiffer
 const BlogLinkedInGuide = lazy(() => import("./pages/BlogLinkedInGuide.tsx"));
 const BlogHighIncomeSkills = lazy(() => import("./pages/BlogHighIncomeSkills.tsx"));
 const BlogAIHiring = lazy(() => import("./pages/BlogAIHiring.tsx"));
+const BlogResumePastComputers = lazy(() => import("./pages/BlogResumePastComputers.tsx"));
+const BlogFirstInterviewIndia = lazy(() => import("./pages/BlogFirstInterviewIndia.tsx"));
+const BlogResumeSkills2026 = lazy(() => import("./pages/BlogResumeSkills2026.tsx"));
 const AtsChecker = lazy(() => import("./pages/AtsChecker.tsx"));
 const Auth = lazy(() => import("./pages/Auth.tsx"));
 const ResumeTemplates = lazy(() => import("./pages/ResumeTemplates.tsx"));
