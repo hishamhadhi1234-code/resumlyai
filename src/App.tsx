@@ -63,6 +63,7 @@ const App = () => (
             <Route path="/blog/resume-gets-past-computers-interviews-2026" element={<BlogResumePastComputers />} />
             <Route path="/blog/first-job-interview-india-2026" element={<BlogFirstInterviewIndia />} />
             <Route path="/blog/resume-skills-freshers-2026" element={<BlogResumeSkills2026 />} />
+            <Route path="/blog/resume-skills-freshers-2026-guide" element={<BlogResumeSkills2026 />} />
             <Route path="/ats-checker" element={<AtsChecker />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/resume-templates" element={<ResumeTemplates />} />
