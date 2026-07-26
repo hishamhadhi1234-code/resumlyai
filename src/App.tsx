@@ -28,6 +28,7 @@ const BlogAIHiring = lazy(() => import("./pages/BlogAIHiring.tsx"));
 const BlogResumePastComputers = lazy(() => import("./pages/BlogResumePastComputers.tsx"));
 const BlogFirstInterviewIndia = lazy(() => import("./pages/BlogFirstInterviewIndia.tsx"));
 const BlogResumeSkills2026 = lazy(() => import("./pages/BlogResumeSkills2026.tsx"));
+const BlogJobSearchChecklist = lazy(() => import("./pages/BlogJobSearchChecklist.tsx"));
 const AtsChecker = lazy(() => import("./pages/AtsChecker.tsx"));
 const Auth = lazy(() => import("./pages/Auth.tsx"));
 const ResumeTemplates = lazy(() => import("./pages/ResumeTemplates.tsx"));
@@ -64,6 +65,7 @@ const App = () => (
             <Route path="/blog/first-job-interview-india-2026" element={<BlogFirstInterviewIndia />} />
             <Route path="/blog/resume-skills-freshers-2026" element={<BlogResumeSkills2026 />} />
             <Route path="/blog/resume-skills-freshers-2026-guide" element={<BlogResumeSkills2026 />} />
+            <Route path="/blog/job-search-checklist-before-you-apply" element={<BlogJobSearchChecklist />} />
             <Route path="/ats-checker" element={<AtsChecker />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/resume-templates" element={<ResumeTemplates />} />
