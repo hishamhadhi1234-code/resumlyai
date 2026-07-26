@@ -7,7 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import { lazy } from "react";
-import { blogRoutes } from "./blogRoutes";
+import { blogRedirects, blogRoutes } from "./blogRoutes";
 
 // Lazy-load non-home routes to reduce initial JS parse/eval on the main thread.
 // UX is preserved — these pages still render identically when navigated to.
@@ -36,6 +36,10 @@ const App = () => (
             {blogRoutes.map(({ path, Component }) => (
               <Route key={path} path={path} element={<Component />} />
             ))}
+            {blogRedirects.map(({ from, to }) => (
+              <Route key={from} path={from} element={<Navigate to={to} replace />} />
+            ))}
+
             <Route path="/ats-checker" element={<AtsChecker />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/resume-templates" element={<ResumeTemplates />} />
