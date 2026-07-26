@@ -15,6 +15,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "The Ultimate Job Search Checklist Before You Apply Anywhere",
+    excerpt:
+      "Use this complete job search checklist to prepare your resume, LinkedIn, portfolio, and applications before applying for any job.",
+    category: "Career Advice",
+    readTime: "11 min read",
+    date: "July 26, 2026",
+    url: "/blog/job-search-checklist-before-you-apply",
+    internal: true,
+  },
+  {
     title: "How AI Is Changing Hiring: What Every Job Seeker Should Know",
     excerpt:
       "Learn how Artificial Intelligence is transforming recruitment, what companies look for, and how job seekers in India can adapt and stand out.",
