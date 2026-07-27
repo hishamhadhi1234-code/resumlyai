@@ -1,7 +1,27 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Star, FileSearch } from "lucide-react";
+
+// Live-looking seeker counter: deterministic base per day, ticks up in-session.
+const BASE_COUNT = 859;
+const START_DATE = new Date("2026-07-27T00:00:00Z").getTime();
+const DAY_MS = 86_400_000;
+
+// Small seeded RNG so each day's increment is stable across renders/users.
+const seededDailyIncrement = (dayIndex: number) => {
+  let x = Math.sin(dayIndex * 9301 + 49297) * 233280;
+  x = x - Math.floor(x);
+  return Math.floor(x * 5) + 1; // 1..5
+};
+
+const getDailyCount = () => {
+  const today = Math.floor((Date.now() - START_DATE) / DAY_MS);
+  let total = BASE_COUNT;
+  for (let d = 0; d <= today; d++) total += seededDailyIncrement(d);
+  return total;
+};
 import heroImage from "@/assets/hero-image.jpg";
 import heroImage640 from "@/assets/hero-image-640.jpg";
 import { useOneTimeRedirect } from "@/hooks/useOneTimeRedirect";
