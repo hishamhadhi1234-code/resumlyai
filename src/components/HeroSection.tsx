@@ -113,7 +113,13 @@ const HeroSection = () => {
               <span className="flex items-center gap-1.5">
                 <Shield className="w-4 h-4 text-primary" /> ATS Friendly
               </span>
-              <span>Used by 10,000+ job seekers</span>
+              <span className="flex items-center gap-1.5">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75 animate-ping" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                </span>
+                Used by {count.toLocaleString()} job seekers (live)
+              </span>
             </div>
           </motion.div>
 
