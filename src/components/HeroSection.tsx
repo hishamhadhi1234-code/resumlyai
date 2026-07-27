@@ -33,6 +33,20 @@ const HeroSection = () => {
   const navigate = useNavigate();
   const buildBtn = useOneTimeRedirect("cta_build_used", BUILD_URL);
   const howBtn = useOneTimeRedirect("cta_howitworks_used", HOWITWORKS_URL);
+  const [count, setCount] = useState<number>(() => getDailyCount());
+
+  useEffect(() => {
+    // Occasionally tick up during the session to feel live (small, capped drift).
+    let drift = 0;
+    const id = window.setInterval(() => {
+      if (drift >= 3) return;
+      if (Math.random() < 0.35) {
+        drift += 1;
+        setCount((c) => c + 1);
+      }
+    }, 15000);
+    return () => window.clearInterval(id);
+  }, []);
 
   return (
     <section className="relative pt-32 pb-20 overflow-hidden">
