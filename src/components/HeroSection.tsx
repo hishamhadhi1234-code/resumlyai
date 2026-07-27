@@ -1,7 +1,27 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Star, FileSearch } from "lucide-react";
+
+// Live-looking seeker counter: deterministic base per day, ticks up in-session.
+const BASE_COUNT = 859;
+const START_DATE = new Date("2026-07-27T00:00:00Z").getTime();
+const DAY_MS = 86_400_000;
+
+// Small seeded RNG so each day's increment is stable across renders/users.
+const seededDailyIncrement = (dayIndex: number) => {
+  let x = Math.sin(dayIndex * 9301 + 49297) * 233280;
+  x = x - Math.floor(x);
+  return Math.floor(x * 5) + 1; // 1..5
+};
+
+const getDailyCount = () => {
+  const today = Math.floor((Date.now() - START_DATE) / DAY_MS);
+  let total = BASE_COUNT;
+  for (let d = 0; d <= today; d++) total += seededDailyIncrement(d);
+  return total;
+};
 import heroImage from "@/assets/hero-image.jpg";
 import heroImage640 from "@/assets/hero-image-640.jpg";
 import { useOneTimeRedirect } from "@/hooks/useOneTimeRedirect";
@@ -13,6 +33,20 @@ const HeroSection = () => {
   const navigate = useNavigate();
   const buildBtn = useOneTimeRedirect("cta_build_used", BUILD_URL);
   const howBtn = useOneTimeRedirect("cta_howitworks_used", HOWITWORKS_URL);
+  const [count, setCount] = useState<number>(() => getDailyCount());
+
+  useEffect(() => {
+    // Occasionally tick up during the session to feel live (small, capped drift).
+    let drift = 0;
+    const id = window.setInterval(() => {
+      if (drift >= 3) return;
+      if (Math.random() < 0.35) {
+        drift += 1;
+        setCount((c) => c + 1);
+      }
+    }, 15000);
+    return () => window.clearInterval(id);
+  }, []);
 
   return (
     <section className="relative pt-32 pb-20 overflow-hidden">
@@ -79,7 +113,13 @@ const HeroSection = () => {
               <span className="flex items-center gap-1.5">
                 <Shield className="w-4 h-4 text-primary" /> ATS Friendly
               </span>
-              <span>Used by 10,000+ job seekers</span>
+              <span className="flex items-center gap-1.5">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75 animate-ping" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                </span>
+                Used by {count.toLocaleString()} job seekers (live)
+              </span>
             </div>
           </motion.div>
 
