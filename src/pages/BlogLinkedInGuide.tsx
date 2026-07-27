@@ -28,6 +28,7 @@ import {
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogTOC from "@/components/BlogTOC";
 
 const BlogLinkedInGuide = () => {
   useEffect(() => {
@@ -73,6 +74,7 @@ const BlogLinkedInGuide = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-6 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg">
               In today's job market, having a written resume is not enough. Recruiters want to know
               more about you before scheduling interviews. One of the places they look is LinkedIn.

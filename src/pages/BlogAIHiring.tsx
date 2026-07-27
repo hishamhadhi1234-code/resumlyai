@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
 import BlogCTA from "@/components/BlogCTA";
+import BlogTOC from "@/components/BlogTOC";
 
 const BlogAIHiring = () => {
   useEffect(() => {
@@ -49,6 +50,7 @@ const BlogAIHiring = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-6 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg">
               The way companies hire people has changed a lot over the past few years. It used to be that recruiters would look at every resume and decide who to interview based on their personal judgment. Now, <strong>Artificial Intelligence</strong> plays a major role in how companies find and hire people.
             </p>

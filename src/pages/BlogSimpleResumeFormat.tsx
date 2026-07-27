@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar, CheckCircle, Download, FileText } from "luc
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogTOC from "@/components/BlogTOC";
 
 const BlogSimpleResumeFormat = () => {
   useEffect(() => {
@@ -56,6 +57,7 @@ const BlogSimpleResumeFormat = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-6 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg">
               Simple Resume Format for Freshers in India is a thing to know about.
               When you are making your resume, it can be really confusing — especially

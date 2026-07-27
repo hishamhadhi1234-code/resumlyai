@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
 import BlogCTA from "@/components/BlogCTA";
+import BlogTOC from "@/components/BlogTOC";
 
 const BlogFirstJobNoExperience = () => {
   useEffect(() => {
@@ -92,6 +93,7 @@ const BlogFirstJobNoExperience = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-6 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg">
               Getting your first job without experience seems really tough — but it is
               absolutely possible. Thousands of freshers in India do it every year. Here's

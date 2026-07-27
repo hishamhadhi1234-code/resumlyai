@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar, LayoutTemplate, CheckCircle2, XCircle, Spar
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogTOC from "@/components/BlogTOC";
 
 const BlogBestResumeTemplates = () => {
   useEffect(() => {
@@ -48,6 +49,7 @@ const BlogBestResumeTemplates = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-6 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg">
               Creating a resume as a fresher can feel overwhelming — especially when you're
               unsure which template to choose. With so many designs online, it's easy to

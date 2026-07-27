@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar, CheckCircle, XCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogTOC from "@/components/BlogTOC";
 
 const BlogResumeMistakes = () => {
   useEffect(() => {
@@ -104,6 +105,7 @@ const BlogResumeMistakes = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-8 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg leading-relaxed">
               If you're a fresher in India trying to land your first job, your resume is your biggest weapon. 
               But here's the harsh truth: most freshers unknowingly make mistakes that instantly get their resumes rejected.

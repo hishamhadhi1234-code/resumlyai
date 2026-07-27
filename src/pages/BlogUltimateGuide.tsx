@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogTOC from "@/components/BlogTOC";
 
 const InternalLink = ({ to, children }: { to: string; children: React.ReactNode }) => (
   <Link
@@ -57,6 +58,7 @@ const BlogUltimateGuide = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-5 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg">
               Getting your first job in India is not easy — especially when every
               company asks for experience. But here's the truth:

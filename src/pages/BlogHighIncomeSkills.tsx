@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
 import BlogCTA from "@/components/BlogCTA";
+import BlogTOC from "@/components/BlogTOC";
 
 const BlogHighIncomeSkills = () => {
   useEffect(() => {
@@ -49,6 +50,7 @@ const BlogHighIncomeSkills = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-6 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg">
               The job market is changing faster than ever before. Companies are no longer hiring people based only on degrees—they're looking for people with practical, in-demand skills that can solve real business problems.
             </p>

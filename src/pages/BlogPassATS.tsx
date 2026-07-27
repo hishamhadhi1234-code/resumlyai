@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar, Search, FileSearch, CheckCircle2, XCircle, 
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogTOC from "@/components/BlogTOC";
 
 const BlogPassATS = () => {
   useEffect(() => {
@@ -48,6 +49,7 @@ const BlogPassATS = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-6 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg">
               If you've applied for jobs but never heard back, the problem might not be your
               skills — it might be your resume. In India, most companies now use{" "}
