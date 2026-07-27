@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogTOC from "@/components/BlogTOC";
 
 const BlogFirstInterviewIndia = () => {
   useEffect(() => {
@@ -181,6 +182,7 @@ const BlogFirstInterviewIndia = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-6 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg">
               Getting your first job interview can feel exciting and stressful at the same time. For many
               freshers in India, interviews are the biggest challenge after building a resume. The good

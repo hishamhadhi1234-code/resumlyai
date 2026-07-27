@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
 import BlogCTA from "@/components/BlogCTA";
+import BlogTOC from "@/components/BlogTOC";
 
 const BlogResumeSkills2026 = () => {
   useEffect(() => {
@@ -48,6 +49,7 @@ const BlogResumeSkills2026 = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-6 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg">
               When you are making a resume, you need to include the right skills. In 2026, resume
               skills are very important for freshers. You should know what skills to put in your

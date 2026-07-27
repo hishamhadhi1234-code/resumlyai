@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
 import BlogCTA from "@/components/BlogCTA";
+import BlogTOC from "@/components/BlogTOC";
 
 const BlogBestSkills = () => {
   useEffect(() => {
@@ -60,6 +61,7 @@ const BlogBestSkills = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-6 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg">
               When it comes to making a resume, freshers often wonder what skills they
               should include. The skills section is one of the most important parts of

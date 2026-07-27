@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
 import BlogCTA from "@/components/BlogCTA";
+import BlogTOC from "@/components/BlogTOC";
 
 const BlogJobSearchChecklist = () => {
   useEffect(() => {
@@ -247,6 +248,7 @@ const BlogJobSearchChecklist = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-6 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg">
               Applying for jobs is easier than ever. With a few clicks, you can send your resume to dozens of companies. But that ease has also made the job market extremely competitive. Recruiters now receive hundreds — sometimes thousands — of applications for a single opening.
             </p>

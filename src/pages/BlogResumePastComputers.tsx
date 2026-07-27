@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar, Bot, FileCheck, ListChecks, XCircle, CheckC
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogTOC from "@/components/BlogTOC";
 
 const BlogResumePastComputers = () => {
   useEffect(() => {
@@ -48,6 +49,7 @@ const BlogResumePastComputers = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-6 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg">
               Many people think that when they apply for a job, a real person reads their resume
               right away. That's not always true. Lots of companies use computer systems to look at

@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar, FileText, BookOpen, ListChecks, HelpCircle,
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogTOC from "@/components/BlogTOC";
 
 const BlogResumeVsCVDifference = () => {
   useEffect(() => {
@@ -47,6 +48,7 @@ const BlogResumeVsCVDifference = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-6 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg">
               Many people get confused between a resume and a CV. They think they are the same thing,
               but they are not. Knowing the difference can help you choose the right document when

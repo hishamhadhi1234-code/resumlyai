@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar, FileText, BookOpen, CheckCircle2, XCircle }
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { setSEO } from "@/lib/seo";
+import BlogTOC from "@/components/BlogTOC";
 
 const BlogResumeVsCV = () => {
   useEffect(() => {
@@ -48,6 +49,7 @@ const BlogResumeVsCV = () => {
           </div>
 
           <article className="prose prose-lg max-w-none text-foreground/90 space-y-6 leading-relaxed">
+            <BlogTOC />
             <p className="text-lg">
               If you're a fresher in India stepping into the job market, you've probably
               come across two terms that sound similar but aren't the same:{" "}
