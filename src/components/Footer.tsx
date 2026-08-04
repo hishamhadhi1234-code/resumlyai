@@ -18,6 +18,15 @@ const Footer = () => (
           <Link to="/ats-checker" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             ATS Checker
           </Link>
+          <Link to="/resume-optimization-for-freshers-india" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Resume Optimization for Freshers
+          </Link>
+          <Link to="/free-ai-resume-optimization-india" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Free AI Resume Optimization
+          </Link>
+          <Link to="/ats-friendly-resume-builder-india" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            ATS-Friendly Resume Builder
+          </Link>
           <Link to="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             Privacy Policy
           </Link>

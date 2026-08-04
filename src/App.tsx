@@ -8,6 +8,7 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import { lazy } from "react";
 import { blogRedirects, blogRoutes } from "./blogRoutes";
+import { LANDING_PAGES } from "./data/landingPages";
 
 // Lazy-load non-home routes to reduce initial JS parse/eval on the main thread.
 // UX is preserved — these pages still render identically when navigated to.
@@ -18,6 +19,7 @@ const AtsChecker = lazy(() => import("./pages/AtsChecker.tsx"));
 const Auth = lazy(() => import("./pages/Auth.tsx"));
 const ResumeTemplates = lazy(() => import("./pages/ResumeTemplates.tsx"));
 const ResumeTemplateDetail = lazy(() => import("./pages/ResumeTemplateDetail.tsx"));
+const LandingPage = lazy(() => import("./pages/LandingPage.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -44,6 +46,9 @@ const App = () => (
             <Route path="/auth" element={<Auth />} />
             <Route path="/resume-templates" element={<ResumeTemplates />} />
             <Route path="/resume-templates/:slug" element={<ResumeTemplateDetail />} />
+            {LANDING_PAGES.map((p) => (
+              <Route key={p.slug} path={`/${p.slug}`} element={<LandingPage />} />
+            ))}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
