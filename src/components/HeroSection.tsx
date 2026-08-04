@@ -36,17 +36,28 @@ const HeroSection = () => {
   const [count, setCount] = useState<number>(() => getDailyCount());
 
   useEffect(() => {
-    // Occasionally tick up during the session to feel live (small, capped drift).
-    let drift = 0;
-    const id = window.setInterval(() => {
-      if (drift >= 3) return;
-      if (Math.random() < 0.35) {
-        drift += 1;
-        setCount((c) => c + 1);
+    let cancelled = false;
+
+    const fetchCount = async () => {
+      try {
+        const { data, error } = await supabase.functions.invoke("seeker-count");
+        if (!cancelled && !error && typeof data?.count === "number") {
+          setCount((c) => Math.max(c, data.count));
+        }
+      } catch {
+        // Keep the locally computed fallback value.
       }
-    }, 15000);
-    return () => window.clearInterval(id);
+    };
+
+    fetchCount();
+    // Refresh periodically so the number keeps creeping up while the page is open.
+    const id = window.setInterval(fetchCount, 60000);
+    return () => {
+      cancelled = true;
+      window.clearInterval(id);
+    };
   }, []);
+
 
   return (
     <section className="relative pt-32 pb-20 overflow-hidden">
