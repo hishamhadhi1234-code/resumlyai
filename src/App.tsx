@@ -46,6 +46,9 @@ const App = () => (
             <Route path="/auth" element={<Auth />} />
             <Route path="/resume-templates" element={<ResumeTemplates />} />
             <Route path="/resume-templates/:slug" element={<ResumeTemplateDetail />} />
+            {LANDING_PAGES.map((p) => (
+              <Route key={p.slug} path={`/${p.slug}`} element={<LandingPage />} />
+            ))}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
