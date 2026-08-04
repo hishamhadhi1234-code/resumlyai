@@ -25,6 +25,7 @@ const getDailyCount = () => {
 import heroImage from "@/assets/hero-image.jpg";
 import heroImage640 from "@/assets/hero-image-640.jpg";
 import { useOneTimeRedirect } from "@/hooks/useOneTimeRedirect";
+import { supabase } from "@/integrations/supabase/client";
 
 const BUILD_URL = "https://alarmpenguinmelt.com/hut48qswjv?key=6bd3167a40ceda1a37fbd420457b971d";
 const HOWITWORKS_URL = "https://www.profitablecpmratenetwork.com/hut48qswjv?key=6bd3167a40ceda1a37fbd420457b971d";
