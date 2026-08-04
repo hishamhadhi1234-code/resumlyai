@@ -19,6 +19,7 @@ const AtsChecker = lazy(() => import("./pages/AtsChecker.tsx"));
 const Auth = lazy(() => import("./pages/Auth.tsx"));
 const ResumeTemplates = lazy(() => import("./pages/ResumeTemplates.tsx"));
 const ResumeTemplateDetail = lazy(() => import("./pages/ResumeTemplateDetail.tsx"));
+const LandingPage = lazy(() => import("./pages/LandingPage.tsx"));
 
 const queryClient = new QueryClient();
 
