@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -11,7 +11,8 @@ import { setSEO } from "@/lib/seo";
 const SITE_URL = "https://resumlyai.lovable.app";
 
 const LandingPage = () => {
-  const { slug } = useParams();
+  const { pathname } = useLocation();
+  const slug = pathname.replace(/^\/+|\/+$/g, "");
   const page = getLandingPage(slug);
 
   useEffect(() => {

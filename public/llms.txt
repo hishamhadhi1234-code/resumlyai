@@ -29,3 +29,9 @@
 - [Resume Skills for Freshers in 2026](/blog/resume-skills-freshers-2026-guide)
 - [How to Prepare for Your First Job Interview in India (2026)](/blog/first-job-interview-india-2026)
 - [Will AI Replace Jobs in 2026?](/blog/will-ai-replace-jobs-2026)
+
+## Guides
+
+- [Resume Optimization for Freshers in India](/resume-optimization-for-freshers-india)
+- [Free AI Resume Optimization India](/free-ai-resume-optimization-india)
+- [Free ATS-Friendly Resume Builder for India](/ats-friendly-resume-builder-india)
