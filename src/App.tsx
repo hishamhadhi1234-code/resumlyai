@@ -8,6 +8,7 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import { lazy } from "react";
 import { blogRedirects, blogRoutes } from "./blogRoutes";
+import { LANDING_PAGES } from "./data/landingPages";
 
 // Lazy-load non-home routes to reduce initial JS parse/eval on the main thread.
 // UX is preserved — these pages still render identically when navigated to.
