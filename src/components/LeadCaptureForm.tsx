@@ -1,22 +1,37 @@
-import { useState } from "react";
-import { Download, Loader2, Mail, CheckCircle2 } from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+  CheckCircle2,
+  Download,
+  Eye,
+  EyeOff,
+  Loader2,
+  Lock,
+  Mail,
+  ShieldCheck,
+} from "lucide-react";
 import { z } from "zod";
+import type { Session } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
-const leadSchema = z.object({
+const authSchema = z.object({
   name: z
     .string()
     .trim()
-    .nonempty({ message: "Please enter your name" })
-    .max(100, { message: "Name must be less than 100 characters" }),
+    .max(100, { message: "Name must be less than 100 characters" })
+    .optional(),
   email: z
     .string()
     .trim()
     .email({ message: "Please enter a valid email address" })
     .max(255, { message: "Email must be less than 255 characters" }),
+  password: z
+    .string()
+    .min(8, { message: "Password must be at least 8 characters" })
+    .max(72, { message: "Password must be less than 72 characters" }),
 });
 
 const TIPS: { heading: string; points: string[] }[] = [
