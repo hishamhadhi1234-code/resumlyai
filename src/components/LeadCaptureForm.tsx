@@ -124,17 +124,43 @@ interface LeadCaptureFormProps {
 const LeadCaptureForm = ({
   sourceSlug,
   heading = "Get the free AI Resume Tips PDF",
-  description = "20 quick fixes that get fresher resumes past ATS software. Enter your details and the PDF downloads instantly.",
+  description = "20 quick fixes that get fresher resumes past ATS software. Sign in with your email to unlock the download — it takes a few seconds and it's free.",
 }: LeadCaptureFormProps) => {
+  const [session, setSession] = useState<Session | null>(null);
+  const [mode, setMode] = useState<"signup" | "signin">("signup");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [checkEmail, setCheckEmail] = useState(false);
   const [done, setDone] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  useEffect(() => {
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setSession(s));
+    supabase.auth.getSession().then(({ data }) => setSession(data.session));
+    return () => sub.subscription.unsubscribe();
+  }, []);
+
+  const saveLeadAndDownload = async (leadName: string, leadEmail: string) => {
+    const { error } = await supabase.from("resume_tip_leads").insert({
+      name: leadName || leadEmail.split("@")[0],
+      email: leadEmail,
+      source_slug: sourceSlug ?? null,
+    });
+    if (error) throw error;
+    await buildTipsPdf();
+    setDone(true);
+    toast({
+      title: "Your tips PDF is downloading",
+      description: "Look for Resumly-AI-Resume-Tips.pdf in your downloads.",
+    });
+  };
+
+  const handleAuthSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const parsed = leadSchema.safeParse({ name, email });
+    const parsed = authSchema.safeParse({ name, email, password });
     if (!parsed.success) {
       toast({
         title: "Check your details",
@@ -146,22 +172,47 @@ const LeadCaptureForm = ({
 
     setLoading(true);
     try {
-      const { error } = await supabase.from("resume_tip_leads").insert({
-        name: parsed.data.name,
-        email: parsed.data.email,
-        source_slug: sourceSlug ?? null,
-      });
-      if (error) throw error;
+      if (mode === "signup") {
+        const { data, error } = await supabase.auth.signUp({
+          email: parsed.data.email,
+          password: parsed.data.password,
+          options: { emailRedirectTo: window.location.href },
+        });
+        if (error) throw error;
+        if (!data.session) {
+          setCheckEmail(true);
+          toast({
+            title: "Confirm your email",
+            description: "We sent you a link. Open it and your download unlocks right away.",
+          });
+          return;
+        }
+      } else {
+        const { error } = await supabase.auth.signInWithPassword({
+          email: parsed.data.email,
+          password: parsed.data.password,
+        });
+        if (error) throw error;
+      }
+      await saveLeadAndDownload(parsed.data.name ?? "", parsed.data.email);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Please try again in a moment.";
+      toast({ title: "Couldn't complete that", description: message, variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
+  };
 
-      await buildTipsPdf();
-      setDone(true);
-      toast({
-        title: "Your tips PDF is downloading",
-        description: "Check your downloads folder for Resumly-AI-Resume-Tips.pdf",
-      });
+  const handleSignedInDownload = async () => {
+    setLoading(true);
+    try {
+      await saveLeadAndDownload(
+        session?.user.user_metadata?.name ?? "",
+        session?.user.email ?? "",
+      );
     } catch {
       toast({
-        title: "Something went wrong",
+        title: "Download failed",
         description: "Please try again in a moment.",
         variant: "destructive",
       });
@@ -172,7 +223,7 @@ const LeadCaptureForm = ({
 
   return (
     <section className="mt-14 rounded-xl border border-border bg-card p-8">
-      <div className="flex items-start gap-3 mb-3">
+      <div className="flex items-start gap-3 mb-4">
         <span className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
           <Mail className="w-5 h-5" />
         </span>
@@ -183,45 +234,135 @@ const LeadCaptureForm = ({
       </div>
 
       {done ? (
-        <div className="flex items-center gap-2 text-primary font-medium mt-4">
+        <div className="flex items-center gap-2 text-primary font-medium">
           <CheckCircle2 className="w-5 h-5" />
-          Sent! Your AI Resume Tips PDF has been downloaded.
+          Done! Your AI Resume Tips PDF has been downloaded.
         </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="grid sm:grid-cols-[1fr_1fr_auto] gap-3 mt-5">
-          <Input
-            placeholder="Your name"
-            value={name}
-            maxLength={100}
-            onChange={(e) => setName(e.target.value)}
-            aria-label="Your name"
-            required
-          />
-          <Input
-            type="email"
-            placeholder="you@email.com"
-            value={email}
-            maxLength={255}
-            onChange={(e) => setEmail(e.target.value)}
-            aria-label="Your email address"
-            required
-          />
-          <Button type="submit" variant="hero" disabled={loading}>
+      ) : checkEmail ? (
+        <div className="rounded-lg bg-muted/50 border border-border p-4">
+          <p className="font-medium flex items-center gap-2">
+            <Mail className="w-4 h-4 text-primary" /> Check your inbox
+          </p>
+          <p className="text-sm text-muted-foreground mt-1">
+            We emailed a confirmation link to <span className="font-medium">{email}</span>. Open it,
+            and you'll come straight back here to download your tips.
+          </p>
+        </div>
+      ) : session ? (
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+          <p className="text-sm text-muted-foreground flex-1">
+            Signed in as <span className="font-medium text-foreground">{session.user.email}</span> —
+            your download is unlocked.
+          </p>
+          <Button variant="hero" onClick={handleSignedInDownload} disabled={loading}>
             {loading ? (
               <>
-                <Loader2 className="w-4 h-4 mr-1 animate-spin" /> Sending…
+                <Loader2 className="w-4 h-4 mr-1 animate-spin" /> Preparing…
               </>
             ) : (
               <>
-                <Download className="w-4 h-4 mr-1" /> Get free tips
+                <Download className="w-4 h-4 mr-1" /> Download the PDF
               </>
             )}
           </Button>
-        </form>
+        </div>
+      ) : (
+        <>
+          <form onSubmit={handleAuthSubmit} className="space-y-3 max-w-md">
+            {mode === "signup" && (
+              <div>
+                <Label htmlFor="lead-name">Your name</Label>
+                <Input
+                  id="lead-name"
+                  placeholder="Priya Sharma"
+                  value={name}
+                  maxLength={100}
+                  autoComplete="name"
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+            )}
+            <div>
+              <Label htmlFor="lead-email">Email</Label>
+              <Input
+                id="lead-email"
+                type="email"
+                placeholder="you@email.com"
+                value={email}
+                maxLength={255}
+                autoComplete="email"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <Label htmlFor="lead-password">Password</Label>
+              <div className="relative">
+                <Input
+                  id="lead-password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="At least 8 characters"
+                  value={password}
+                  minLength={8}
+                  maxLength={72}
+                  autoComplete={mode === "signup" ? "new-password" : "current-password"}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="pr-10"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((v) => !v)}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
+            </div>
+
+            <Button type="submit" variant="hero" className="w-full" disabled={loading}>
+              {loading ? (
+                <>
+                  <Loader2 className="w-4 h-4 mr-1 animate-spin" /> Please wait…
+                </>
+              ) : (
+                <>
+                  <Download className="w-4 h-4 mr-1" />
+                  {mode === "signup" ? "Create account & download" : "Sign in & download"}
+                </>
+              )}
+            </Button>
+          </form>
+
+          <p className="text-sm text-muted-foreground mt-3">
+            {mode === "signup" ? "Already have an account?" : "New to Resumly?"}{" "}
+            <button
+              type="button"
+              className="text-primary font-medium hover:underline"
+              onClick={() => setMode(mode === "signup" ? "signin" : "signup")}
+            >
+              {mode === "signup" ? "Sign in instead" : "Create a free account"}
+            </button>
+          </p>
+
+          <ul className="mt-5 grid sm:grid-cols-3 gap-3 text-xs text-muted-foreground">
+            <li className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-primary flex-shrink-0" /> Your password is
+              encrypted — we never see it
+            </li>
+            <li className="flex items-center gap-2">
+              <Lock className="w-4 h-4 text-primary flex-shrink-0" /> No card, no charges, cancel
+              anytime
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" /> No spam — only free
+              career resources
+            </li>
+          </ul>
+        </>
       )}
-      <p className="text-xs text-muted-foreground mt-3">
-        No spam. We only email you free resume and job-search resources.
-      </p>
     </section>
   );
 };
