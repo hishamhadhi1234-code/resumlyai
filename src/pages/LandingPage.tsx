@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import LeadCaptureForm from "@/components/LeadCaptureForm";
 import NotFound from "@/pages/NotFound";
 import { getLandingPage } from "@/data/landingPages";
 import { setSEO } from "@/lib/seo";
@@ -143,6 +144,9 @@ const LandingPage = () => {
               ))}
             </ol>
           </section>
+
+          {/* Lead capture */}
+          <LeadCaptureForm sourceSlug={page.slug} />
 
           {/* CTA */}
           <section className="mt-14 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-xl p-8 text-center">
