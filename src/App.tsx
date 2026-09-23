@@ -44,6 +44,7 @@ const App = () => (
             ))}
 
             <Route path="/ats-checker" element={<AtsChecker />} />
+            <Route path="/ats-tips" element={<AtsTips />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/resume-templates" element={<ResumeTemplates />} />
             <Route path="/resume-templates/:slug" element={<ResumeTemplateDetail />} />
