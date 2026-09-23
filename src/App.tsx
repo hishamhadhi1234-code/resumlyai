@@ -16,6 +16,7 @@ const Builder = lazy(() => import("./pages/Builder.tsx"));
 const ResumePage = lazy(() => import("./pages/ResumePage.tsx"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.tsx"));
 const AtsChecker = lazy(() => import("./pages/AtsChecker.tsx"));
+const AtsTips = lazy(() => import("./pages/AtsTips.tsx"));
 const Auth = lazy(() => import("./pages/Auth.tsx"));
 const ResumeTemplates = lazy(() => import("./pages/ResumeTemplates.tsx"));
 const ResumeTemplateDetail = lazy(() => import("./pages/ResumeTemplateDetail.tsx"));
@@ -43,6 +44,7 @@ const App = () => (
             ))}
 
             <Route path="/ats-checker" element={<AtsChecker />} />
+            <Route path="/ats-tips" element={<AtsTips />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/resume-templates" element={<ResumeTemplates />} />
             <Route path="/resume-templates/:slug" element={<ResumeTemplateDetail />} />
