@@ -18,6 +18,9 @@ const Footer = () => (
           <Link to="/ats-checker" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             ATS Checker
           </Link>
+          <Link to="/ats-tips" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            AI ATS Improvement Tips
+          </Link>
           <Link to="/resume-optimization-for-freshers-india" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             Resume Optimization for Freshers
           </Link>
