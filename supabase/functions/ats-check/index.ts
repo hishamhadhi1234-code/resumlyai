@@ -26,9 +26,14 @@ Deno.serve(async (req) => {
     }
 
 
-    const { resumeText, jobDescription } = await req.json();
+    const { resumeText, jobDescription, resumeImage } = await req.json();
 
-    if (!resumeText || typeof resumeText !== "string" || resumeText.trim().length < 50) {
+    const hasImage =
+      typeof resumeImage === "string" &&
+      /^data:image\/(png|jpe?g|webp);base64,/.test(resumeImage) &&
+      resumeImage.length < 8_000_000;
+
+    if (!hasImage && (!resumeText || typeof resumeText !== "string" || resumeText.trim().length < 50)) {
       return new Response(
         JSON.stringify({ error: "Resume text is too short. Please upload a valid resume." }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -42,14 +47,21 @@ Deno.serve(async (req) => {
 
     const userPrompt = `Analyze this resume for ATS compatibility${jobDescription ? " against the provided job description" : ""}.
 
-RESUME:
+${hasImage ? "The resume is provided as a photo/image below. Read all of its text carefully. Note that image-only resumes are poorly parsed by real ATS systems — mention this in weaknesses." : `RESUME:
 """
-${resumeText.slice(0, 12000)}
-"""
+${String(resumeText).slice(0, 12000)}
+"""`}
 
-${jobDescription ? `JOB DESCRIPTION:\n"""\n${jobDescription.slice(0, 4000)}\n"""\n` : ""}
+${jobDescription ? `JOB DESCRIPTION:\n"""\n${String(jobDescription).slice(0, 4000)}\n"""\n` : ""}
 
 Score the resume on a 0-100 ATS scale.`;
+
+    const userContent = hasImage
+      ? [
+          { type: "text", text: userPrompt },
+          { type: "image_url", image_url: { url: resumeImage } },
+        ]
+      : userPrompt;
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -61,7 +73,7 @@ Score the resume on a 0-100 ATS scale.`;
         model: "google/gemini-2.5-flash",
         messages: [
           { role: "system", content: systemPrompt },
-          { role: "user", content: userPrompt },
+          { role: "user", content: userContent },
         ],
         tools: [
           {
