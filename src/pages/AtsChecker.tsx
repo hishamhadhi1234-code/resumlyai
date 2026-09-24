@@ -30,6 +30,7 @@ const AtsChecker = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [fileName, setFileName] = useState("");
   const [resumeText, setResumeText] = useState("");
+  const [resumeImage, setResumeImage] = useState("");
   const [jobDescription, setJobDescription] = useState("");
   const [parsing, setParsing] = useState(false);
   const [analyzing, setAnalyzing] = useState(false);
@@ -180,7 +181,7 @@ const AtsChecker = () => {
               <input
                 ref={fileInputRef}
                 type="file"
-                accept=".pdf,.docx,.txt"
+                accept=".pdf,.docx,.txt,.jpg,.jpeg,.png,.webp,image/*"
                 className="hidden"
                 onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])}
               />
@@ -199,7 +200,7 @@ const AtsChecker = () => {
                 <div className="flex flex-col items-center gap-2 text-muted-foreground">
                   <Upload className="w-8 h-8" />
                   <span className="font-medium text-foreground">Upload your resume</span>
-                  <span className="text-xs">PDF, DOCX or TXT — up to ~5MB</span>
+                  <span className="text-xs">PDF, DOCX, TXT or a photo (JPG/PNG)</span>
                 </div>
               )}
             </div>
@@ -221,7 +222,7 @@ const AtsChecker = () => {
               size="lg"
               className="w-full"
               onClick={handleAnalyze}
-              disabled={!resumeText || analyzing}
+              disabled={(!resumeText && !resumeImage) || analyzing}
             >
               {analyzing ? (
                 <>
