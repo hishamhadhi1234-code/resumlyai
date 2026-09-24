@@ -60,13 +60,43 @@ const AtsChecker = () => {
     return text;
   };
 
+  const imageToDataUrl = (file: File): Promise<string> =>
+    new Promise((resolve, reject) => {
+      const url = URL.createObjectURL(file);
+      const img = new Image();
+      img.onload = () => {
+        const max = 2000;
+        const scale = Math.min(1, max / Math.max(img.width, img.height));
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+        canvas.getContext("2d")!.drawImage(img, 0, 0, canvas.width, canvas.height);
+        URL.revokeObjectURL(url);
+        resolve(canvas.toDataURL("image/jpeg", 0.85));
+      };
+      img.onerror = () => {
+        URL.revokeObjectURL(url);
+        reject(new Error("Could not read this image. Try a JPG or PNG photo."));
+      };
+      img.src = url;
+    });
+
   const handleFile = async (file: File) => {
     setReport(null);
     setFileName(file.name);
     setParsing(true);
+    setResumeImage("");
     try {
       let text = "";
       const lower = file.name.toLowerCase();
+      if (file.type.startsWith("image/") || /\.(jpe?g|png|webp)$/.test(lower)) {
+        if (file.size > 15 * 1024 * 1024) throw new Error("Image is too large (max 15MB).");
+        const dataUrl = await imageToDataUrl(file);
+        setResumeImage(dataUrl);
+        setResumeText("");
+        toast({ title: "Photo loaded", description: `${file.name} is ready to analyze.` });
+        return;
+      }
       if (lower.endsWith(".pdf")) {
         text = await extractPdfText(file);
       } else if (lower.endsWith(".docx")) {
@@ -76,7 +106,7 @@ const AtsChecker = () => {
       } else if (lower.endsWith(".txt")) {
         text = await file.text();
       } else {
-        throw new Error("Unsupported file. Please upload PDF, DOCX or TXT.");
+        throw new Error("Unsupported file. Please upload PDF, DOCX, TXT or a photo (JPG/PNG).");
       }
       if (!text || text.trim().length < 50) {
         throw new Error("Could not read enough text from your file. Try a different format.");
@@ -87,13 +117,14 @@ const AtsChecker = () => {
       toast({ title: "Failed to read file", description: e.message, variant: "destructive" });
       setFileName("");
       setResumeText("");
+      setResumeImage("");
     } finally {
       setParsing(false);
     }
   };
 
   const handleAnalyze = async () => {
-    if (!resumeText) {
+    if (!resumeText && !resumeImage) {
       toast({ title: "Upload a resume first", variant: "destructive" });
       return;
     }
@@ -107,7 +138,7 @@ const AtsChecker = () => {
     setReport(null);
     try {
       const { data, error } = await supabase.functions.invoke("ats-check", {
-        body: { resumeText, jobDescription },
+        body: resumeImage ? { resumeImage, jobDescription } : { resumeText, jobDescription },
       });
       if (error) throw error;
       if ((data as any)?.error) throw new Error((data as any).error);
