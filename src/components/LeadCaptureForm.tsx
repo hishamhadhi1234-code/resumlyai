@@ -159,10 +159,12 @@ const LeadCaptureForm = ({
   }, []);
 
   const saveLeadAndDownload = async (leadName: string, leadEmail: string) => {
+    const { data: userData } = await supabase.auth.getUser();
+    const email = userData.user?.email ?? leadEmail;
     const { error } = await supabase.from("resume_tip_leads").insert({
-      name: leadName || leadEmail.split("@")[0],
-      email: leadEmail,
-      source_slug: sourceSlug ?? null,
+      name: (leadName.trim() || email.split("@")[0]).slice(0, 100),
+      email,
+      source_slug: sourceSlug ? sourceSlug.slice(0, 200) : null,
     });
     if (error) throw error;
     await buildTipsPdf();

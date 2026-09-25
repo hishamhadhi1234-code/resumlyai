@@ -8,6 +8,13 @@
       "when": 1789915105538,
       "tag": "0000_create_resume_tip_leads",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790352237944,
+      "tag": "0001_restrict_lead_inserts",
+      "breakpoints": true
     }
   ]
 }
