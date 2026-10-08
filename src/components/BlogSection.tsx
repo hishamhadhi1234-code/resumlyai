@@ -15,6 +15,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "How to Build Work Experience Even If You've Never Had a Job",
+    excerpt:
+      "Learn how to gain practical experience through projects, internships, freelancing, volunteering, competitions and more — even before your first job.",
+    category: "Career Advice",
+    readTime: "12 min read",
+    date: "Oct 8, 2026",
+    url: "/blog/build-work-experience-without-job",
+    internal: true,
+  },
+  {
     title: "The Ultimate Job Search Checklist Before You Apply Anywhere",
     excerpt:
       "Use this complete job search checklist to prepare your resume, LinkedIn, portfolio, and applications before applying for any job.",
