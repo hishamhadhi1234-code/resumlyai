@@ -15,6 +15,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "Top 50 Free Websites Every Job Seeker Should Bookmark in 2026",
+    excerpt:
+      "The best free websites for jobs, remote work, freelancing, learning skills, resumes, interview prep and government jobs in India — plus a weekly job-search plan.",
+    category: "Career Advice",
+    readTime: "14 min read",
+    date: "Oct 10, 2026",
+    url: "/blog/top-50-free-websites-job-seekers-2026",
+    internal: true,
+  },
+  {
     title: "How to Build Work Experience Even If You've Never Had a Job",
     excerpt:
       "Learn how to gain practical experience through projects, internships, freelancing, volunteering, competitions and more — even before your first job.",
