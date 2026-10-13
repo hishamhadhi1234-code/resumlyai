@@ -15,6 +15,16 @@ type Blog = {
 
 const blogs: Blog[] = [
   {
+    title: "The Complete Interview Preparation Guide for Freshers in India (2026)",
+    excerpt:
+      "Prepare for your first job interview with this complete fresher's guide. Learn common interview questions, sample answers, technical interview tips, and a 7-day preparation plan.",
+    category: "Interviews",
+    readTime: "14 min read",
+    date: "Oct 13, 2026",
+    url: "/blog/interview-preparation-guide-for-freshers-india",
+    internal: true,
+  },
+  {
     title: "Top 50 Free Websites Every Job Seeker Should Bookmark in 2026",
     excerpt:
       "The best free websites for jobs, remote work, freelancing, learning skills, resumes, interview prep and government jobs in India — plus a weekly job-search plan.",
