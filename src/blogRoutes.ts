@@ -27,6 +27,7 @@ type BlogRouteDef = {
 };
 
 const registry: BlogRouteDef[] = [
+  { slug: "interview-preparation-guide-for-freshers-india", file: "./pages/BlogInterviewPreparationGuide.tsx" },
   { slug: "top-50-free-websites-job-seekers-2026", file: "./pages/BlogTop50JobWebsites.tsx", aliases: ["top-50-websites-job-seekers", "free-websites-job-seekers-2026"] },
   { slug: "build-work-experience-without-job", file: "./pages/BlogBuildExperienceWithoutJob.tsx", aliases: ["how-to-build-work-experience-without-a-job", "build-experience-without-job"] },
   { slug: "will-ai-replace-jobs-2026", file: "./pages/BlogAIJobs.tsx", aliases: ["ai-replace-jobs-2026", "ai-jobs-2026"] },
