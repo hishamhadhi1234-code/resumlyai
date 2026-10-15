@@ -13,6 +13,7 @@ const CTASection = lazy(() => import("@/components/CTASection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
 const Footer = lazy(() => import("@/components/Footer"));
 const AdUnit = lazy(() => import("@/components/AdUnit"));
+const BannerAd = lazy(() => import("@/components/BannerAd"));
 
 const Index = () => (
   <div className="min-h-screen">
@@ -21,6 +22,9 @@ const Index = () => (
     <Suspense fallback={null}>
       <div className="container mx-auto px-4 py-6">
         <AdUnit slot="2931159552" />
+      </div>
+      <div className="container mx-auto px-4 pb-6">
+        <BannerAd />
       </div>
       <BlogSection />
       <HowItWorksSection />
