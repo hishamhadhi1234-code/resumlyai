@@ -14,6 +14,7 @@ const ContactSection = lazy(() => import("@/components/ContactSection"));
 const Footer = lazy(() => import("@/components/Footer"));
 const AdUnit = lazy(() => import("@/components/AdUnit"));
 const BannerAd = lazy(() => import("@/components/BannerAd"));
+const PopunderAd = lazy(() => import("@/components/PopunderAd"));
 
 const Index = () => (
   <div className="min-h-screen">
