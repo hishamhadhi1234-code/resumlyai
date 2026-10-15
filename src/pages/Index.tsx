@@ -14,14 +14,12 @@ const ContactSection = lazy(() => import("@/components/ContactSection"));
 const Footer = lazy(() => import("@/components/Footer"));
 const AdUnit = lazy(() => import("@/components/AdUnit"));
 const BannerAd = lazy(() => import("@/components/BannerAd"));
-const PopunderAd = lazy(() => import("@/components/PopunderAd"));
 
 const Index = () => (
   <div className="min-h-screen">
     <Navbar />
     <HeroSection />
     <Suspense fallback={null}>
-      <PopunderAd />
       <div className="container mx-auto px-4 py-6">
         <AdUnit slot="2931159552" />
       </div>
