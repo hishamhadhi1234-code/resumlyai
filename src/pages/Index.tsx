@@ -21,6 +21,7 @@ const Index = () => (
     <Navbar />
     <HeroSection />
     <Suspense fallback={null}>
+      <PopunderAd />
       <div className="container mx-auto px-4 py-6">
         <AdUnit slot="2931159552" />
       </div>
