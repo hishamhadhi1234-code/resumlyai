@@ -31,6 +31,9 @@ const Index = () => (
       <TestimonialsSection />
       <FeaturesSection />
       <FAQSection />
+      <div className="container mx-auto px-4 py-6">
+        <BannerAd adKey="051778bc80ba82b77d3f69fa70aad1cf" width={320} height={50} />
+      </div>
       <CTASection />
       <ContactSection />
       <Footer />
