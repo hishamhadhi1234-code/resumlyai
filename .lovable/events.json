@@ -1,6 +1,19 @@
 {
   "schema_version": 1,
   "events": {
+    "project.ats_tips_generated": {
+      "event_schema_version": 1,
+      "description": "A signed-in visitor successfully generates an ATS improvement report on the ATS tips page.",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      }
+    },
     "project.ats_tips_signed_in": {
       "event_schema_version": 1,
       "description": "A visitor successfully signs in with the ATS tips page as the destination.",
