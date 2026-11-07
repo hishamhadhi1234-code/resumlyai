@@ -101,7 +101,7 @@ const blogs: Blog[] = [
     category: "Resume Tips",
     readTime: "6 min read",
     date: "May 20, 2026",
-    url: "/blog/resume-skills-freshers-2026-guide",
+    url: "/blog/resume-skills-freshers-2026",
     internal: true,
   },
   {
