@@ -29,7 +29,10 @@ const Auth = () => {
     });
 
     // If already signed in, bounce to redirect target
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: sub } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_IN" && session && redirectTo === "/ats-tips") {
+        window.__lovableEvents?.track?.("project.ats_tips_signed_in");
+      }
       if (session) navigate(redirectTo, { replace: true });
     });
     supabase.auth.getSession().then(({ data: { session } }) => {
