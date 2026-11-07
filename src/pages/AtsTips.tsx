@@ -96,6 +96,7 @@ const AtsTips = () => {
       if (error) throw error;
       if ((data as { error?: string })?.error) throw new Error((data as { error: string }).error);
       setReport(data as TipsReport);
+      window.__lovableEvents?.track?.("project.ats_tips_generated");
     } catch (e) {
       toast({
         title: "Could not generate tips",
